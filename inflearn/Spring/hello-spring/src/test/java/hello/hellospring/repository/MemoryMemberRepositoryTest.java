@@ -1,6 +1,7 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.service.MemberService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -62,4 +63,7 @@ class MemoryMemberRepositoryTest {
 
         Assertions.assertEquals(result.size(),3);
     }
+
+
+
 }
