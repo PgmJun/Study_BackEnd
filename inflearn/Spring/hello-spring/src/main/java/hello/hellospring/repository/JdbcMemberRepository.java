@@ -11,7 +11,9 @@ import java.util.Optional;
 
 public class JdbcMemberRepository implements MemberRepository{
 
+    //db에 붙으려면 필요한 코드
     private final DataSource dataSource;
+
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -25,11 +27,12 @@ public class JdbcMemberRepository implements MemberRepository{
             conn = getConnection();
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
+            //변수 sql의 첫번째(?)에 값 입력
             pstmt.setString(1, member.getName());
 
+            //DB에 Query를 날리는 코드드
             pstmt.executeUpdate();
             rs = pstmt.getGeneratedKeys();
-
             if (rs.next()) {
                 member.setId(rs.getLong(1));
             } else {
@@ -52,6 +55,8 @@ public class JdbcMemberRepository implements MemberRepository{
             conn = getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setLong(1, id);
+
+            //excuteQuery : 조회
             rs = pstmt.executeQuery();
             if(rs.next()) {
                 Member member = new Member();
@@ -146,4 +151,3 @@ public class JdbcMemberRepository implements MemberRepository{
         DataSourceUtils.releaseConnection(conn, dataSource);
     }
 }
-    }
