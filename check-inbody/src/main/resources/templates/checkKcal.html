@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>나의 기초대사량은?</title>
+      <style>
+        * {
+          margin: 0; padding: 0;
+          box-sizing:border-box;
+        }
+        html, body{
+          width:100%; height:100%;
+        }
+        body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: #58666e;
+        }
+        header{
+          position:relative;
+          top:0;
+          height:150px;
+          line-height:150px;
+          z-index:2000;
+          text-align:center;
+          width:100%;
+          background-color:#eaeaed;
+        }
+        #record{
+          position:absolute;
+          right:0;
+        }
+        article{
+          position:relative;
+          text-align:center;
+          height:100%;
+        }
+        #input-spec{
+          position:relative;
+          height:1000px;
+          width:100%;
+        }
+        #input-spec input{
+          margin:10px 0 10px 10px;
+        }
+        #input-spec > input[type="number"]{
+          width:50px;
+        }
+        #input-spec > input[type="text"]{
+          width:100px;
+        }
+        #input-spec > button[type="submit"]{
+          position:relative;
+          margin-top:10px;
+          width:100px;
+          line-height:50px;
+          height:50px;
+          color:white;
+          font-weight:bold;
+          border:1px gray solid;
+          box-shadow: 1px 1px 3px gray;
+          background-color:blue;
+          text-align:center;
+        }
+      </style>
+</head>
+<body>
+<header>
+  <h1>나는 기초대사량이 몇일까?</h1>
+</header>
+<article>
+  <div class="container">
+    <form id="input-spec" action="/calculate" method="post">
+      이름 : <input type="text" name="name" placeholder=". . .">
+      <hr>
+      성별 :
+      <label for="male_radio">남자</label> <input type="radio" id="male_radio" name="gender" value="male" checked>
+      <label for="female_radio">여자</label> <input type="radio" id="female_radio" name="gender" value="female">
+      <hr>
+      나이 : <input type="number" name="age" min="1" max="100">
+      <hr>
+      키(cm) : <input type="text" name="height" placeholder=". . .">
+      <hr>
+      몸무게(kg) : <input type="text" name="weight" placeholder=". . .">
+      <hr>
+      <button type="submit">제출</button>
+      <a id="record" href="/record">기록 보기</a>
+    </form>
+
+  </div>
+</article>
+
+</body>
+</html>

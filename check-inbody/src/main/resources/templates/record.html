@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#기록일</th>
+                <th>성별</th>
+                <th>이름</th>
+                <th>기초대사량</th>
+                <th>키</th>
+                <th>몸무게</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- th:each 는 루프를 돌면서 로직을 실행 -->
+            <tr th:each="records : ${records}">
+                <td th:text="${records.date}"></td>
+                <td th:text="${records.gender}"></td>
+                <td th:text="${records.name}"></td>
+                <td th:text="${records.rmr}"></td>
+                <td th:text="${records.height}"></td>
+                <td th:text="${records.weight}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- finish container -->
+
+</body>
+</html>
