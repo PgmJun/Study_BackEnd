@@ -6,12 +6,13 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional //데이터를 저장하고 변경할 때 항상 필요한 것 (Join위에 써도 됌)
 public class MemberService {
-
     private final MemberRepository memberRepository;
 
     public MemberService(MemberRepository memberRepository){

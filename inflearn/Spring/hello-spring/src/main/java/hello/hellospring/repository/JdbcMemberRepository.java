@@ -30,7 +30,7 @@ public class JdbcMemberRepository implements MemberRepository{
             //변수 sql의 첫번째(?)에 값 입력
             pstmt.setString(1, member.getName());
 
-            //DB에 Query를 날리는 코드드
+            //DB에 Query를 날리는 코드
             pstmt.executeUpdate();
             rs = pstmt.getGeneratedKeys();
             if (rs.next()) {
