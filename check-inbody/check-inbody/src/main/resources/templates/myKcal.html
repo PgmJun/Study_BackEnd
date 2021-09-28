@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <!-- 기초대사량 결과도출화면  -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>나의 기초대사량은?</title>
     <style>
@@ -39,7 +40,10 @@
 <article>
     <h1 th:text="${name} + '님의 기초대사량'"></h1>
     <p th:text="${kcal} + 'kcal'">kcal</p>
-    <a href="/">돌아가기</a>
+    <form action="home" method="post">
+        <input type="text" name="id" th:value="${id}" hidden>
+        <button type="submit">돌아가기</button>
+    </form>
 </article>
 
 </body>

@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- 스팩 기록장 페이지 -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      table{
+        text-align: center;
+      }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <div>
+        <h1>나의 기록</h1>
         <table border="1">
             <thead>
             <tr>
@@ -16,6 +23,7 @@
                 <th>기초대사량</th>
                 <th>키</th>
                 <th>몸무게</th>
+                <th>나이</th>
             </tr>
             </thead>
             <tbody>
@@ -27,10 +35,15 @@
                 <td th:text="${records.rmr}"></td>
                 <td th:text="${records.height}"></td>
                 <td th:text="${records.weight}"></td>
+                <td th:text="${records.age}"></td>
             </tr>
             </tbody>
         </table>
     </div>
+    <form action="home" method="post">
+        <input type="text" name="id" th:value="${id}" hidden>
+        <button type="submit">돌아가기</button>
+    </form>
 </div> <!-- finish container -->
 
 </body>

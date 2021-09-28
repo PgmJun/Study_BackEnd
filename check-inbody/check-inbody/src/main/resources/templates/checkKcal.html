@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- 신체스팩입력 페이지  -->
+
   <title>나의 기초대사량은?</title>
-      <style>
+  <style>
         * {
           margin: 0; padding: 0;
           box-sizing:border-box;
@@ -34,10 +36,17 @@
           text-align:center;
           height:100%;
         }
+        .container{
+          position: relative;
+          text-align: center;
+          width: 100%;
+        }
         #input-spec{
-          position:relative;
-          height:1000px;
-          width:100%;
+          display: inline-block;
+          height: 300px;
+          width:500px;
+          border: 1px solid black;
+          margin:10px;
         }
         #input-spec input{
           margin:10px 0 10px 10px;
@@ -48,7 +57,7 @@
         #input-spec > input[type="text"]{
           width:100px;
         }
-        #input-spec > button[type="submit"]{
+        #submit{
           position:relative;
           margin-top:10px;
           width:100px;
@@ -61,6 +70,9 @@
           background-color:blue;
           text-align:center;
         }
+        #print-record{
+          position: relative;
+        }
       </style>
 </head>
 <body>
@@ -70,7 +82,10 @@
 <article>
   <div class="container">
     <form id="input-spec" action="/calculate" method="post">
-      이름 : <input type="text" name="name" placeholder=". . .">
+      <!--login ID-->
+      <input type="text" name="id" th:value="${id}" readonly hidden>
+
+      이름 : <input type="text" name="name">
       <hr>
       성별 :
       <label for="male_radio">남자</label> <input type="radio" id="male_radio" name="gender" value="male" checked>
@@ -78,14 +93,17 @@
       <hr>
       나이 : <input type="number" name="age" min="1" max="100">
       <hr>
-      키(cm) : <input type="text" name="height" placeholder=". . .">
+      키(cm) : <input type="text" name="height">
       <hr>
-      몸무게(kg) : <input type="text" name="weight" placeholder=". . .">
+      몸무게(kg) : <input type="text" name="weight">
       <hr>
-      <button type="submit">제출</button>
-      <a id="record" href="/record">기록 보기</a>
+      <button id="submit" type="submit">제출</button>
     </form>
-
+    <form id="print-record" action="/record" method="get">
+      <input type="text" name="id" th:value="${id}" hidden>
+      <button type="submit">기록보기</button>
+    </form>
+    <!-- 로그아웃 기능 구현 -->
   </div>
 </article>
 
