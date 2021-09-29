@@ -125,7 +125,7 @@ public class bmiController {
 
         return "myKcal";
     }
-    @GetMapping("record")
+    @PostMapping("record")
     public String list(recordForm form,Model model){
         List<Record> records = recordService.findRecords(form.getId());
         model.addAttribute("records", records);
@@ -133,6 +133,11 @@ public class bmiController {
         model.addAttribute("id",form.getId());
 
         return "record";
+    }
+
+    @PostMapping("logout")
+    public String logout(){
+        return "index";
     }
 
 }
