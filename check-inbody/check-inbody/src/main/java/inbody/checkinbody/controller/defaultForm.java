@@ -1,6 +1,6 @@
 package inbody.checkinbody.controller;
 
-public class loginForm {
+public class defaultForm {
     private String id;
     private String pw;
 

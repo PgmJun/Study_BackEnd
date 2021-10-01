@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class bmiController {
@@ -45,16 +44,31 @@ public class bmiController {
     //입력한 아이디로 계정을 찾고 그 계정의 pw가 입력받은 pw와 같을 때 "checkKcal"로 넘어간다.
     //아닐시 redirect
     @PostMapping("login")
-    public String CheckKcal(loginForm form, Model model){
+    public String mainHtml(defaultForm form, Model model){
 
         Registry validate = registryService.findById(form.getId()).get();
 
         if((validate.getId() + validate.getPw()).equals(form.getId() + form.getPw())){
             model.addAttribute("id", form.getId());
-            return "checkKcal";
+            return "main";
         }
         return "index";
     }
+
+    //main.html -> checkKcal.html
+    @PostMapping("checkKcal")
+    public String CheckKcal(defaultForm form, Model model){
+        model.addAttribute("id", form.getId());
+        return "checkKcal";
+    }
+
+    //main.html -> cuttingFat.html
+//    @PostMapping("")
+//    public String cuttingFat(defaultForm form, Model model){
+//        model.addAttribute("id", form.getId());
+//        return "cuttingFat";
+//    }
+
 
     //!!!registry.html에서 회원가입 버튼 클릭시!!!
     //id가 비어있을 시 다시 registry.html로 리턴
