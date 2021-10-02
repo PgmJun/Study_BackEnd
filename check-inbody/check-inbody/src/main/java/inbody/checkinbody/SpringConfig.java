@@ -1,10 +1,7 @@
 package inbody.checkinbody;
 
 
-import inbody.checkinbody.repository.JpaRecordRepository;
-import inbody.checkinbody.repository.JpaRegistryRepository;
-import inbody.checkinbody.repository.RecordRepository;
-import inbody.checkinbody.repository.RegistryRepository;
+import inbody.checkinbody.repository.*;
 import inbody.checkinbody.service.RecordService;
 import inbody.checkinbody.service.RegistryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.EntityManager;
+import java.beans.BeanProperty;
 
 @Configuration
 public class SpringConfig {
@@ -43,6 +41,9 @@ public class SpringConfig {
     RegistryRepository registryRepository(){
         return new JpaRegistryRepository(em);
     }
+
+    @Bean
+    DiaryRepository diaryRepository() {return new JpaDiaryRepository(em); }
 
 
 }

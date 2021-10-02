@@ -40,7 +40,7 @@
 <article>
     <h1 th:text="${name} + '님의 기초대사량'"></h1>
     <p th:text="${kcal} + 'kcal'">kcal</p>
-    <form action="home" method="post">
+    <form action="backCheckKcal" method="post">
         <input type="text" name="id" th:value="${id}" hidden>
         <button type="submit">돌아가기</button>
     </form>

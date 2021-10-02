@@ -96,7 +96,7 @@ public class bmiController {
     }
 
 
-    @PostMapping("home")
+    @PostMapping("backCheckKcal")
     public String backHome(recordForm form, Model model){
         model.addAttribute("id",form.getId());
         return "checkKcal";
@@ -148,6 +148,15 @@ public class bmiController {
 
         return "record";
     }
+
+    @PostMapping("diary")
+    public String diary(defaultForm form,Model model){
+        model.addAttribute("id", form.getId());
+
+        return "diary";
+    }
+
+
 
     @PostMapping("logout")
     public String logout(){
