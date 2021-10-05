@@ -24,8 +24,8 @@ public class JpaDiaryRepository implements DiaryRepository{
 
     @Override
     public List<Diary> findById(String id) {
-        return em.createQuery("select m from diary m where id = :id",Diary.class)
-                .setParameter("id",id)
+        return em.createQuery("select m from Diary m where id = :id",Diary.class)
+                .setParameter("id", id)
                 .getResultList();
     }
 }

@@ -5,6 +5,7 @@ text varchar(1500),
 target varchar(50),
 date varchar(100),
 weight double,
+cardio double,
 primary key(num),
 foreign key(id) references registry(id));
 

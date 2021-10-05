@@ -1,7 +1,9 @@
 package inbody.checkinbody.controller;
 
+import inbody.checkinbody.domain.Diary;
 import inbody.checkinbody.domain.Record;
 import inbody.checkinbody.domain.Registry;
+import inbody.checkinbody.service.DiaryService;
 import inbody.checkinbody.service.RecordService;
 import inbody.checkinbody.service.RegistryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,13 @@ import java.util.List;
 @Controller
 public class bmiController {
 
+    private final DiaryService diaryService;
     private final RegistryService registryService;
     private final RecordService recordService;
 
     @Autowired
-    public bmiController(RegistryService registryService, RecordService recordService) {
+    public bmiController(RegistryService registryService, RecordService recordService, DiaryService diaryService) {
+        this.diaryService = diaryService;
         this.registryService = registryService;
         this.recordService = recordService;
     }
@@ -95,14 +99,12 @@ public class bmiController {
         else return "registry";
     }
 
-
-    @PostMapping("backCheckKcal")
-    public String backHome(recordForm form, Model model){
-        model.addAttribute("id",form.getId());
-        return "checkKcal";
-    }
+//=========================================================================
 
 
+
+
+    //checkKcal -> myKcal
     @PostMapping("calculate")
     public String bmi(bmiForm form, Model model){
 
@@ -139,16 +141,28 @@ public class bmiController {
 
         return "myKcal";
     }
-    @PostMapping("record")
+
+    //checkKcal -> Kcalrecord
+    @PostMapping("checkKcal-record")
     public String list(recordForm form,Model model){
         List<Record> records = recordService.findRecords(form.getId());
         model.addAttribute("records", records);
 
         model.addAttribute("id",form.getId());
 
-        return "record";
+        return "Kcalrecord";
     }
 
+    // Kcalrecord -> checkKcal
+    @PostMapping("backCheckKcal")
+    public String backCheckKcal(recordForm form, Model model){
+        model.addAttribute("id",form.getId());
+        return "checkKcal";
+    }
+
+//=========================================================================
+
+    //main -> diary
     @PostMapping("diary")
     public String diary(defaultForm form,Model model){
         model.addAttribute("id", form.getId());
@@ -156,8 +170,55 @@ public class bmiController {
         return "diary";
     }
 
+    //diary -> main
+    @PostMapping("recordDiary")
+    public String diaryRecord(diaryForm form,Model model){
+        Date time = new Date();
+        String TIME = format.format(time);
 
+        Diary diary = new Diary();
 
+        diary.setDate(TIME);
+        diary.setId(form.getId());
+        diary.setWeight(form.getWeight());
+        diary.setText(form.getText());
+        diary.setCardio(form.getCardio());
+        diary.setTarget(form.getChest() + form.getBack() + form.getShoulder() + form.getLegs() + form.getBiceps() + form.getTriceps());
+
+        diaryService.join(diary);
+
+        model.addAttribute("id", form.getId());
+
+        return "diary";
+    }
+
+    //diary -> diaryRecord
+    @PostMapping("diary-list")
+    public String diaryList(defaultForm form,Model model){
+        List<Diary> diarys = diaryService.findDiary(form.getId());
+        model.addAttribute("diarys", diarys);
+
+        model.addAttribute("id", form.getId());
+        return "diaryRecord";
+    }
+
+    //diaryRecord -> diary
+    @PostMapping("backDiary")
+    public String backDiary(recordForm form, Model model){
+        model.addAttribute("id",form.getId());
+        return "checkKcal";
+    }
+    insert into diary(id,text,target,date,weight,cardio) values('chltmdwns96','awd','aad','asd',1,1);
+//=========================================================================
+
+    //backToMainPage
+    @PostMapping("home")
+    public String backMain(recordForm form, Model model){
+        model.addAttribute("id",form.getId());
+        return "main";
+    }
+
+    //logout
     @PostMapping("logout")
     public String logout(){
         return "index";

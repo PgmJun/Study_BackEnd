@@ -115,11 +115,15 @@
     <!-- side forms -->
     <div id="side-forms">
       <!-- load user record -->
-      <form class="side-form" action="/record" method="post">
+      <form class="side-form" action="/checkKcal-record" method="post">
         <input type="text" name="id" th:value="${id}" hidden>
         <button type="submit">기록보기</button>
       </form>
-
+      <!-- mainPage -->
+      <form class="side-form" action="/home" method="post">
+        <input type="text" name="id" th:value="${id}" hidden>
+        <button type="submit">메인화면</button>
+      </form>
       <!-- logout -->
       <form class="side-form" action="/logout" method="post">
         <button type="submit">로그아웃</button>

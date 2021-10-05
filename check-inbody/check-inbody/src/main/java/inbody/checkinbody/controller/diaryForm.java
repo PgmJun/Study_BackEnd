@@ -42,11 +42,6 @@ public class diaryForm {
     public void setCardio(double cardio) { this.cardio = cardio; }
 
 
-
-
-
-
-
     public String getChest() {
         return chest;
     }

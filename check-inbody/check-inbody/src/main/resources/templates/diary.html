@@ -78,31 +78,21 @@
           transition: 0.3s;
           background-color: green;
         }
-        #side-forms{
-        display: inline-block;
-        }
-        #side-forms > button[type="submit"]{
-          position:relative;
-          margin:10px;
-          width:100px;
-          line-height:50px;
-          height:50px;
-          color:white;
-          font-weight:bold;
-          border:1px gray solid;
-          box-shadow: 1px 1px 3px gray;
-          background-color:gray;
-          text-align:center;
-          border-radius:10px;
-        }
-        #side-forms > button:hover {
-          display:inline-block;
-          transition: 0.3s;
-          background-color: green;
-        }
         .input-cw > input{
           display:inline-block;
           width:50px;
+        }
+        #side-forms{
+        position:relative;
+        display:inline-block;
+        width:150px; height:50px;
+        line-height:50px;
+        background-color:lightgray;
+        border-radius:5px;
+        text-align:center;
+        }
+        .side-form{
+          display:inline-block;
         }
       </style>
 </head>
@@ -112,9 +102,9 @@
 </header>
 <article>
     <div class="container">
-        <form id="form-diary" action="/login" method="post">
+        <form id="form-diary" action="/recordDiary" method="post">
             <!--login ID-->
-            <input type="text" name="id" th:value="${id}" readonly>
+            <input type="text" name="id" th:value="${id}" readonly hidden>
 
             <div id="form-div-diary">
                 <textarea name="diary-text" rows="20" cols="60" placeholder="내용을 입력해주세요. (1500자 이내)" maxlength="1500"></textarea>
@@ -131,26 +121,36 @@
 
                 <div id="input-target">
                     <strong>운동부위</strong>
-                    <label><input type="radio" name="chest" value="chest">가슴</label>
-                    <label><input type="radio" name="back" value="back">등</label>
-                    <label><input type="radio" name="shoulder" value="shoulder">어깨</label>
-                    <label><input type="radio" name="legs" value="legs">하체</label>
-                    <label><input type="radio" name="biceps" value="biceps">이두</label>
-                    <label><input type="radio" name="triceps" value="triceps">삼두</label>
+                    <label><input type="radio" name="chest" value="(가슴)">가슴</label>
+                    <label><input type="radio" name="back" value="(등)">등</label>
+                    <label><input type="radio" name="shoulder" value="(어깨)">어깨</label>
+                    <label><input type="radio" name="legs" value="(하체)">하체</label>
+                    <label><input type="radio" name="biceps" value="(이두)">이두</label>
+                    <label><input type="radio" name="triceps" value="(삼두)">삼두</label>
                 </div>
             </div>
 
             <div id="form-div-button">
                 <button type="submit">기록</button>
             </div>
-            <!-- load user record -->
-            <div id="side-forms">
-                <form class="side-form" action="/diary-list" method="post">
-                    <input type="text" name="id" th:value="${id}" hidden>
-                    <button type="submit">기록보기</button>
-                </form>
-            </div>
         </form>
+
+        <br>
+
+        <!-- load user record -->
+        <div id="side-forms">
+            <form class="side-form" action="/diary-list" method="post">
+                <input type="text" name="id" th:value="${id}" hidden>
+                <button type="submit">기록보기</button>
+            </form>
+
+            <!-- mainPage -->
+
+            <form class="side-form" action="/home" method="post">
+                <input type="text" name="id" th:value="${id}" hidden>
+                <button type="submit">메인화면</button>
+            </form>
+        </div>
     </div>
 </article>
 

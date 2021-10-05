@@ -2,6 +2,7 @@ package inbody.checkinbody;
 
 
 import inbody.checkinbody.repository.*;
+import inbody.checkinbody.service.DiaryService;
 import inbody.checkinbody.service.RecordService;
 import inbody.checkinbody.service.RegistryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class SpringConfig {
     RegistryRepository registryRepository(){
         return new JpaRegistryRepository(em);
     }
+
+    @Bean
+    DiaryService diaryService() {return new DiaryService(diaryRepository());}
 
     @Bean
     DiaryRepository diaryRepository() {return new JpaDiaryRepository(em); }
