@@ -170,7 +170,7 @@ public class bmiController {
         return "diary";
     }
 
-    //diary -> main
+    //diary -> DBsave -> diary
     @PostMapping("recordDiary")
     public String diaryRecord(diaryForm form,Model model){
         Date time = new Date();
@@ -193,7 +193,7 @@ public class bmiController {
     }
 
     //diary -> diaryRecord
-    @PostMapping("diary-list")
+    @PostMapping("diaryList")
     public String diaryList(defaultForm form,Model model){
         List<Diary> diarys = diaryService.findDiary(form.getId());
         model.addAttribute("diarys", diarys);
@@ -206,9 +206,9 @@ public class bmiController {
     @PostMapping("backDiary")
     public String backDiary(recordForm form, Model model){
         model.addAttribute("id",form.getId());
-        return "checkKcal";
+        return "diary";
     }
-    insert into diary(id,text,target,date,weight,cardio) values('chltmdwns96','awd','aad','asd',1,1);
+
 //=========================================================================
 
     //backToMainPage

@@ -21,14 +21,6 @@ public class diaryForm {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public double getWeight() {
         return weight;
     }
@@ -90,5 +82,7 @@ public class diaryForm {
         this.triceps = triceps;
     }
 
+    public String getText() { return text; }
 
+    public void setText(String text) { this.text = text; }
 }

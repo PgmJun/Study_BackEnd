@@ -107,7 +107,7 @@
             <input type="text" name="id" th:value="${id}" readonly hidden>
 
             <div id="form-div-diary">
-                <textarea name="diary-text" rows="20" cols="60" placeholder="내용을 입력해주세요. (1500자 이내)" maxlength="1500"></textarea>
+                <textarea name="text" rows="20" cols="60" placeholder="내용을 입력해주세요. (1500자 이내)" maxlength="1500"></textarea>
 
                 <div class="input-cw">
                     <strong>체중</strong>
@@ -139,15 +139,15 @@
 
         <!-- load user record -->
         <div id="side-forms">
-            <form class="side-form" action="/diary-list" method="post">
-                <input type="text" name="id" th:value="${id}" hidden>
+            <form class="side-form" action="/diaryList" method="post">
+                <input type="text" name="id" th:value="${id}">
                 <button type="submit">기록보기</button>
             </form>
 
             <!-- mainPage -->
 
             <form class="side-form" action="/home" method="post">
-                <input type="text" name="id" th:value="${id}" hidden>
+                <input type="text" name="id" th:value="${id}">
                 <button type="submit">메인화면</button>
             </form>
         </div>

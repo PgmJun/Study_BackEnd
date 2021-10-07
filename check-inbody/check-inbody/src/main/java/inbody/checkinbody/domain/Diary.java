@@ -33,14 +33,6 @@ public class Diary {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public String getDate() {
         return date;
     }
@@ -71,5 +63,13 @@ public class Diary {
 
     public void setCardio(double cardio) {
         this.cardio = cardio;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
