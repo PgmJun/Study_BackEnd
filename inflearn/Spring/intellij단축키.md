@@ -31,3 +31,6 @@ Ctrl + Shift + Enter
 
 복붙:
 Ctrl + D
+
+실행
+Ctrl + Shift + F10
