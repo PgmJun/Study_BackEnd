@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- 메인페이지  -->
+  <title>마이 칼로리</title>
+      <style>
+        * {
+          margin: 0; padding: 0;
+          box-sizing:border-box;
+        }
+        html, body{
+          width:100%; height:100%;
+        }
+        body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: #58666e;
+        }
+        header{
+          position:relative;
+          top:0;
+          height:150px;
+          line-height:150px;
+          z-index:2000;
+          text-align:center;
+          width:100%;
+          background-color:#eaeaed;
+        }
+        #record{
+          position:absolute;
+          right:0;
+        }
+        article{
+          position:relative;
+          text-align:center;
+          height:100%;
+        }
+        #form-login{
+          display: inline-block;
+          height: 300px;
+          width:500px;
+          border: 1px solid black;
+          margin:10px;
+        }
+        .container{
+          position: relative;
+          text-align:center;
+          width: 100%;
+        }
+        input{
+          margin:10px 0 10px 10px;
+        }
+        #form-div-login > input[type="text"],input[type="password"]{
+          display:inline-block;
+          width:150px;
+        }
+        #form-div-button > button[type="submit"]{
+          position:relative;
+          margin:10px;
+          width:100px;
+          line-height:50px;
+          height:50px;
+          color:white;
+          font-weight:bold;
+          border:1px gray solid;
+          box-shadow: 1px 1px 3px gray;
+          background-color:gray;
+          text-align:center;
+          border-radius:10px;
+        }
+        p > a {
+          color:blue;
+          text-decoration:none;
+          font-weight:bold;
+        }
+        #form-div-button > button:hover {
+          transition: 0.3s;
+          background-color: green;
+        }
+      </style>
+</head>
+<body>
+<header>
+  <h1>마이 칼로리</h1>
+</header>
+<article>
+  <div class="container">
+    <form id="form-login" action="/login" method="post">
+
+      <div id="form-div-login">
+        ID : <input type="text" name="id"><br>
+        Password : <input type="password" name="pw">
+      </div>
+
+      <div id="form-div-button">
+        <button type="submit">로그인</button>
+      </div>
+
+      <p>아이디가 없으신가요? <a href="/registry">회원가입</a></p>
+
+   </form>
+ </div>
+</article>
+
+</body>
+</html>

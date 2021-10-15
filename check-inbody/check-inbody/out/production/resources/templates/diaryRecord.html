@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 스팩 기록장 페이지 -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      table{
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <h1>나의 기록</h1>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>#기록일</th>
+                <th>체중</th>
+                <th>유산소</th>
+                <th>운동부위</th>
+                <th>기록</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- th:each 는 루프를 돌면서 로직을 실행 -->
+            <tr th:each="diarys : ${diarys}">
+                <td th:text="${diarys.date}"></td>
+                <td th:text="${diarys.weight}"></td>
+                <td th:text="${diarys.cardio}"></td>
+                <td th:text="${diarys.target}"></td>
+                <td th:text="${diarys.text}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- backDiaryPage -->
+    <form action="backDiary" method="post">
+        <input type="text" name="id" th:value="${id}" hidden>
+        <button type="submit">돌아가기</button>
+    </form>
+</div> <!-- finish container -->
+
+</body>
+</html>
