@@ -33,6 +33,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -58,12 +59,47 @@
       <recent name="hello.core.singleton" />
       <recent name="hello.core.discount" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hello.core.scan.filter" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in core.core.test">
+  <component name="RunManager" selected="JUnit.AutoWiredTest.AutowiredTest">
+    <configuration name="All in core.core.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core.core.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in core.core.test (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core.core.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in core.core.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core.core.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AutoWiredTest.AutowiredTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core.core.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hello.core.autowired.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hello.core.autowired" />
+      <option name="MAIN_CLASS_NAME" value="hello.core.autowired.AutoWiredTest" />
+      <option name="METHOD_NAME" value="AutowiredTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,61 +120,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SingleTonTest.singletonServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core.core.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hello.core.singleton.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hello.core.singleton" />
-      <option name="MAIN_CLASS_NAME" value="hello.core.singleton.SingleTonTest" />
-      <option name="METHOD_NAME" value="singletonServiceTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SingleTonTest.springContainer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core.core.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hello.core.singleton.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hello.core.singleton" />
-      <option name="MAIN_CLASS_NAME" value="hello.core.singleton.SingleTonTest" />
-      <option name="METHOD_NAME" value="springContainer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StatefulServiceTest.statefulServiceSingleton" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core.core.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hello.core.singleton.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hello.core.singleton" />
-      <option name="MAIN_CLASS_NAME" value="hello.core.singleton.StatefulServiceTest" />
-      <option name="METHOD_NAME" value="statefulServiceSingleton" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in core.core.test" />
+        <item itemvalue="JUnit.AutoWiredTest.AutowiredTest" />
+        <item itemvalue="JUnit.All in core.core.test (2)" />
+        <item itemvalue="JUnit.All in core.core.test (1)" />
         <item itemvalue="JUnit.ConfigurationSingletonTest.configurationTest" />
-        <item itemvalue="JUnit.StatefulServiceTest.statefulServiceSingleton" />
-        <item itemvalue="JUnit.SingleTonTest.springContainer" />
-        <item itemvalue="JUnit.SingleTonTest.singletonServiceTest" />
+        <item itemvalue="JUnit.All in core.core.test" />
       </list>
     </recent_temporary>
   </component>
