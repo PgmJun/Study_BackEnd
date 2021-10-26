@@ -45,6 +45,7 @@ PK가 여러 키로 구성된 복합키(Composite Primary Key)로 구성된 경�
 
 --------------------------------------------------------------------
 <h1>SQL 문장 종류</h1>
+
 -DDL(Data Definition Language) 데이터 정의어:<br>
 CREATE, DROP, ALTER, RENAME / 테이블 관련 설정
 
@@ -59,6 +60,7 @@ COMMIT, ROLLBACK
 
 --------------------------------------------------------------------
 <h1>CREATE TABLE</h1>
+
 -문장 작성법: CREATE TABLE 테이블이름 ( 속성 자료형 설정, ... ); <br>
 
 -칼럼, 테이블명은 "반드시" 문자로 시작<br>
@@ -71,38 +73,42 @@ COMMIT, ROLLBACK
 
 --------------------------------------------------------------------
 <h1>제약조건</h1>
-Primary key(기본키): 중복X(고유함), NOT NULL<br>
-Unique key(고유키): 중복X(고유함)<br>
-NOT NULL: NULL 금지<br>
-CHECK: 입력 값 범위 제한<br>
+
+-Primary key(기본키): 중복X(고유함), NOT NULL<br>
+
+-Unique key(고유키): 중복X(고유함)<br>
+
+-NOT NULL: NULL 금지<br>
+
+-CHECK: 입력 값 범위 제한<br>
 사용법EX) CREATE TABLE EXAM(A INT CHECK(A IN(1,2,3))); || SELECT * FROM EXAM WHERE AGE IN(22,23);
 
 
 --------------------------------------------------------------------
 <h1>테이블 구조변경(DDL)</h1>
 
-컬럼 추가: ALTER TABLE 테이블명 ADD 컬럼명 자료형;<br>
+-컬럼 추가: ALTER TABLE 테이블명 ADD 컬럼명 자료형;<br>
 
-컬럼 제거: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;<br>
+-컬럼 제거: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;<br>
 
-컬럼 데이터 유형 조건 등 변경:<br>
+-컬럼 데이터 유형 조건 등 변경:<br>
 ORACLE) ALTER TABLE 테이블명 MODIFY(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 SQL SERVER) ALTER TABLE 테이블명 ALTER(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 
-컬럼명 변경:<br>
+-컬럼명 변경:<br>
 ALTER TABLE 테이블명 RENAME COLUMN 컬럼명 TO 뉴컬럼명<br>
 
-제약조건 삭제:<br>
+-제약조건 삭제:<br>
 ALTER TABLE 테이블명 DROP CONSTRAINT 조건명;
 
 
 --------------------------------------------------------------------
 <h1>CHAR(s), VARCHAR(s)의 차이점</h1>
 
-CHAR(s): 고정길이<br>
+-CHAR(s): 고정길이<br>
 ex) CHAR(3) 'aa' = 'aa '<br>
 
-VARCHAR(s): 가변길이<br>
+-VARCHAR(s): 가변길이<br>
 ex) VARCHAR(3) 'aa' != 'aa '<br>
 
 
