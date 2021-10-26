@@ -115,15 +115,31 @@ ex) VARCHAR(3) 'aa' != 'aa '<br>
 --------------------------------------------------------------------
 <h1>GROUP BY, HAVING절</h1>
 
+-GROUP BY: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼]<br>
+
+-HAVING: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼] HAVING [GROUP BY로 묶여 집계된 값에 조건추가]<br>
+ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점수) > 150;<br>
+=학생테이블에서 학급반을 GROUP BY로 묶고 반별로 학생들 점수의 합을 150점 이상인 반만 출력<br>
+
+*GROUP BYY절에는 ALIAS사용 불가 <br>
+*집계함수는 WHERE절에 올 수 없으므로 HAVING절에 조건을 추가 <br>
 
 
 --------------------------------------------------------------------
-<h1></h1>
+<h1>ORDER BY절</h1>
 
+-SQL문으로 조회된 데이터를 다양한 목적에 맞게 특정 칼럼을 기준으로 정렬<br>
 
+-ALIAS사용가능<br>
+
+-DEFAULT값은 ASC(오름차순)<br>
+
+-SQL구문 제일 마지막에 위치<br>
+
+-사용법: SELECT * FROM 테이블이름 ORDER BY 점수 DESC;<br>
 
 --------------------------------------------------------------------
-<h1></h1>
+<h1>JOIN</h1>
 
 
 
