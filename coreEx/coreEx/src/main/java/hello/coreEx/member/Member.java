@@ -1,6 +1,5 @@
 package hello.coreEx.member;
 
-
 public class Member {
     private Long id;
     private String name;

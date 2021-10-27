@@ -1,28 +1,33 @@
 package hello.coreEx.member;
 
+import hello.coreEx.AppConfig;
 import hello.coreEx.repository.MemberRepository;
 import hello.coreEx.repository.MemoryMemberRepository;
 import hello.coreEx.service.MemberService;
 import hello.coreEx.service.MemberServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberServiceTest {
-
-    MemberRepository memberRepository = new MemoryMemberRepository();
-    MemberService memberService = new MemberServiceImpl(memberRepository);
+    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
     void join(){
+        MemberService memberService = ac.getBean(MemberService.class);
+
         //given
-        Member member = new Member(1L, "choi", Grade.VIP);
+        Long memberId = 1L;
+        Member member = new Member(memberId, "name", Grade.VIP);
+
 
         //when
         memberService.join(member);
-        Member findMember = memberService.findMember(1L);
+        Member findMember = memberService.findMember(memberId);
 
         //then
-        System.out.println(findMember);
-        Assertions.assertEquals(findMember, member);
+        Assertions.assertEquals(memberId, findMember.getId());
+
     }
 }
