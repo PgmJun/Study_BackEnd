@@ -8,13 +8,13 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
-        <module name="coreEx.coreEx.test~1" />
-        <module name="coreEx.coreEx.main~1" />
+        <module name="coreEx.coreEx.main" />
+        <module name="coreEx.coreEx.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="coreEx.coreEx.main" target="11" />
-      <module name="coreEx.coreEx.test" target="11" />
+      <module name="coreEx.coreEx.main~1" target="11" />
+      <module name="coreEx.coreEx.test~1" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
