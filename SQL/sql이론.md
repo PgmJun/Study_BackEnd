@@ -178,7 +178,9 @@ ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점�
 FOREIGN KEY(A) REFERENCES B(C) ON DELETE CASCADE
 
 --------------------------------------------------------------------
-<h1></h1>
+<h1>DELETE / TRUNCATE TABLE 차이</h1>
+- DELETE: DELETE 문은 행을 한번에 하나씩 제거하고 삭제된 각 행에 대해 트랜잭션 로그에 항목을 기록<br>
+- TRUNCATE TABLE: 테이블의 데이터를 저장하는 데 사용되는 데이터 페이지의 할당을 취소하는 방식으로 데이터를 제거하며 페이지 할당 취소만을 트랜잭션 로그에 기록
 
 
 
