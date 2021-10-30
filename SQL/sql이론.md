@@ -107,37 +107,37 @@ COMMIT, ROLLBACK
 --------------------------------------------------------------------
 <h1>테이블 구조변경(DDL)</h1>
 
--컬럼 추가: ALTER TABLE 테이블명 ADD 컬럼명 자료형;<br>
+- 컬럼 추가: ALTER TABLE 테이블명 ADD 컬럼명 자료형;
 
--컬럼 제거: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;<br>
+- 컬럼 제거: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 
--컬럼 데이터 유형 조건 등 변경:<br>
+- 컬럼 데이터 유형 조건 등 변경:
 ORACLE) ALTER TABLE 테이블명 MODIFY(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 SQL SERVER) ALTER TABLE 테이블명 ALTER(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 
--컬럼명 변경:<br>
+- 컬럼명 변경:
 ALTER TABLE 테이블명 RENAME COLUMN 컬럼명 TO 뉴컬럼명<br>
 
--제약조건 삭제:<br>
+- 제약조건 삭제:
 ALTER TABLE 테이블명 DROP CONSTRAINT 조건명;
 
 
 --------------------------------------------------------------------
 <h1>CHAR(s), VARCHAR(s)의 차이점</h1>
 
--CHAR(s): 고정길이<br>
+- CHAR(s): 고정길이<br>
 ex) CHAR(3) 'aa' = 'aa '<br>
 
--VARCHAR(s): 가변길이<br>
+- VARCHAR(s): 가변길이<br>
 ex) VARCHAR(3) 'aa' != 'aa '<br>
 
 
 --------------------------------------------------------------------
 <h1>GROUP BY, HAVING절</h1>
 
--GROUP BY: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼]<br>
+- GROUP BY: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼]<br>
 
--HAVING: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼] HAVING [GROUP BY로 묶여 집계된 값에 조건추가]<br>
+- HAVING: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼] HAVING [GROUP BY로 묶여 집계된 값에 조건추가]<br>
 ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점수) > 150;<br>
 =학생테이블에서 학급반을 GROUP BY로 묶고 반별로 학생들 점수의 합을 150점 이상인 반만 출력<br>
 
@@ -148,15 +148,15 @@ ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점�
 --------------------------------------------------------------------
 <h1>ORDER BY절</h1>
 
--SQL문으로 조회된 데이터를 다양한 목적에 맞게 특정 칼럼을 기준으로 정렬<br>
+- SQL문으로 조회된 데이터를 다양한 목적에 맞게 특정 칼럼을 기준으로 정렬<br>
 
--ALIAS사용가능<br>
+- ALIAS사용가능<br>
 
--DEFAULT값은 ASC(오름차순)<br>
+- DEFAULT값은 ASC(오름차순)<br>
 
--SQL구문 제일 마지막에 위치<br>
+- SQL구문 제일 마지막에 위치<br>
 
--사용법: SELECT * FROM 테이블이름 ORDER BY 점수 DESC;<br>
+- 사용법: SELECT * FROM 테이블이름 ORDER BY 점수 DESC;<br>
 
 --------------------------------------------------------------------
 <h1>ON DELETE/UPDATE</h1>
