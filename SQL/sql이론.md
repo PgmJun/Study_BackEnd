@@ -172,8 +172,10 @@ ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점�
 - 옵션 CASCADE -> 부모테이블에서 primary 값이 수정될 경우<br> 옵션 CASCADE 로 정의되면 하위테이블의 reference값은 변경된 상위테이블의 수정된 값을 가지면서 참조무결성을 유지합니다.
 
 #on DELETE CASCADE
-- 옵션 CASCADE ->부모테이블에서 primary 값이 삭제될 경우<br>옵션 CASCADE 로 정의되면 하위테이블의 reference값은 삭제되면서 참조무결성을 유지합니다.
+- 옵션 CASCADE ->부모테이블에서 primary 값이 삭제될 경우<br>옵션 CASCADE 로 정의되면 하위테이블의 reference값은 삭제되면서 참조무결성을 유지합니다.<br>
 
+사용예시:<br>
+FOREIGN KEY(A) REFERENCES B(C) ON DELETE CASCADE
 
 --------------------------------------------------------------------
 <h1></h1>
