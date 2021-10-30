@@ -34,91 +34,93 @@ null 무결성은 특정 속성값에는 null 값을 가질 수 없다는 규칙
 --------------------------------------------------------------------
 <h1>정규화</h1>
 
-1차 정규화:<br>
+- 1차 정규화:<br>
 같은 성격과 내용의 컬럼이 연속적으로 나타나는 컬럼이 존재할 때, 해당 컬럼을 제거하고 기본테이블의 PK를 추가해 새로운 테이블을 생성하고, 기존의 테이블과 1:N의 관계 형성
 
-2차 정규화:<br>
+- 2차 정규화:<br>
 PK가 여러 키로 구성된 복합키(Composite Primary Key)로 구성된 경우가 2차 정규화의 대상이 되며, 복합키 전체에 의존하지 않고 복합키의 일부분에만 종속되는 속성들이 존재할 경우 (즉, 부분적 함수 종속 관계) 이를 분리하는 것이다.
 
-3차 정규화<br>
+- 3차 정규화<br>
 테이블의 키가 아닌 컬럼들은 기본키에 의존해야 하는데 겉으로는 그런 것처럼 보이지만 실제로는 기본키가 아닌 다른 일반 컬럼에 의존하는 컬럼들이 있을 수 있다. 이를 (이전적 함수 종속 관계)라고 한다. 제 3정규화는 PK에 의존하지 않고 일반컬럼에 의존하는 컬럼들을 분리한다.
 
 --------------------------------------------------------------------
 <h1>SQL 문장 종류</h1>
 
--DDL(Data Definition Language) 데이터 정의어:<br>
+- DDL(Data Definition Language) 데이터 정의어:<br>
 CREATE, DROP, ALTER, RENAME / 테이블 관련 설정
 
--DML(Data Manipulation Language) 데이터 조작어:<br>
+- DML(Data Manipulation Language) 데이터 조작어:<br>
 SELECT, INSERT, UPDATE, DELETE / 데이터 관련 설정
 
--DCL(Data Control Language) 데이터 제어어:<br>
+- DCL(Data Control Language) 데이터 제어어:<br>
 REVOKE, GRANT
 
--TCL(Transaction Control Language) 트렌젝션 제어어:<br>
+- TCL(Transaction Control Language) 트렌젝션 제어어:<br>
 COMMIT, ROLLBACK
 
 --------------------------------------------------------------------
 <h1>식별자의 종류</h1>
 
-#대표성 여부:<br>
+- 대표성 여부:<br>
 -주식별자: 엔터티 내에서 각 어커런스를 구분할 수 있는 구분자이며, 타 엔터티와 참조관계를 연결할 수 있는 식별자<br>
 -보조식별자: 엔터티 내에서 각 어커런스를 구분할 수 있는 구분자이나 대표성을 가지지 못해 참조관계 연결을 못함
 
-#스스로 생성 여부:<br>
+- 스스로 생성 여부:<br>
 -내부식별자: 엔터티 내부에서 스스로 만들어지는 식별자<br>
 -외부식별자: 타 엔터티와의 관계를 통해 타 엔터티로부터 받아오는 식별자
 
-#속성의 수:<br>
+- 속성의 수:<br>
 -단일식별자: 하나의 속성으로 구성된 식별자<br>
 -복합식별자: 둘 이상의 속성으로 구성된 식별자
 
 
-#대체 여부:<br>
+- 대체 여부:<br>
 -인조식별자: 업무에 의해 만들어지는 식별자<br>
 -본질식별자: 업무적으로 만들어지지는 않지만 원조식별자가 복잡한 구성을 가지고 있기 때문에 인위적으로 만든 
 
 --------------------------------------------------------------------
 <h1>CREATE TABLE</h1>
 
--문장 작성법: CREATE TABLE 테이블이름 ( 속성 자료형 설정, ... ); <br>
+- 문장 작성법: CREATE TABLE 테이블이름 ( 속성 자료형 설정, ... ); <br>
 
--칼럼, 테이블명은 "반드시" 문자로 시작<br>
+- 칼럼, 테이블명은 "반드시" 문자로 시작<br>
 
--A-Z, a-z, 0-9, _, $, # 만 사용가능<br>
+- A-Z, a-z, 0-9, _, $, # 만 사용가능<br>
 
--테이블명, 칼럼명 중복X 
+- 테이블명, 칼럼명 중복X 
 
 
 
 --------------------------------------------------------------------
 <h1>제약조건</h1>
 
--Primary key(기본키): 중복X(고유함), NOT NULL<br>
+- Primary key(기본키): 중복X(고유함), NOT NULL
 
--Unique key(고유키): 중복X(고유함)<br>
+- Unique key(고유키): 중복X(고유함)
 
--NOT NULL: NULL 금지<br>
+- NOT NULL: NULL 금지
 
--CHECK: 입력 값 범위 제한<br>
+- CHECK: 입력 값 범위 제한<br>
 사용법EX) CREATE TABLE EXAM(A INT CHECK(A IN(1,2,3))); || SELECT * FROM EXAM WHERE AGE IN(22,23);
 
 
 --------------------------------------------------------------------
 <h1>테이블 구조변경(DDL)</h1>
 
-- 컬럼 추가: ALTER TABLE 테이블명 ADD 컬럼명 자료형;
+- 컬럼 추가:<br>
+ALTER TABLE 테이블명 ADD 컬럼명 자료형;
 
-- 컬럼 제거: ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+- 컬럼 제거:<br>
+ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 
-- 컬럼 데이터 유형 조건 등 변경:
+- 컬럼 데이터 유형 조건 등 변경:<br>
 ORACLE) ALTER TABLE 테이블명 MODIFY(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 SQL SERVER) ALTER TABLE 테이블명 ALTER(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 
-- 컬럼명 변경:
+- 컬럼명 변경:<br>
 ALTER TABLE 테이블명 RENAME COLUMN 컬럼명 TO 뉴컬럼명<br>
 
-- 제약조건 삭제:
+- 제약조건 삭제:<br>
 ALTER TABLE 테이블명 DROP CONSTRAINT 조건명;
 
 
