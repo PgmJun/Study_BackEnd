@@ -200,11 +200,31 @@ ORACLE: '' -> NULL
 SQL SERVER: '' -> ''
 
 --------------------------------------------------------------------
-<h1></h1>
+<h1>JOIN</h1>
+- JOIN은 관계형 데이터 베이스에서 쪼개져 있는 데이터들을 관련있는 컬럼을 기준으로 행을 합쳐주는 연산자다.<br>
+<h3>JOIN의 종류</h3>
+- 내부 조인 (INNER JOIN)
+- 교차 조인 (CROSS JOIN  <-> <highlight>CARTESIAN JOIN</highlight>)
+- 등가/동등/동일 조인(EQUI JOIN)
+- 비등가 조인(NON-EQUI JOIN)
+- 자연 조인 (NATURAL JOIN)
+- 외부 조인 (OUTER JOIN)
+- 완전 외부 조인 (FULL OUTER JOIN)
+- 왼쪽 (LEFT OUTER JOIN)
+- 오른쪽 (RIGHT OUTER JOIN)
+- 셀프 조인 (SELF JOIN)
+- 안티 조인 (ANTI JOIN)
+- 세미 조인 (SEMI JOIN)
 
 
 --------------------------------------------------------------------
-<h1></h1>
+<h1>LEFT/RIGHT OUTER JOIN</h1>
+- 조인조건에 성립하는 부분과 지정해준 LEFT/RIGHT의 기준이 되는 테이블의 로우를 출력해주는 JOIN이다<br>
+기준이 되는 반대쪽에 (+)를 표시하면 OUTER JOIN을 나타낼 수 있다.<br>
+ex) SELECT A.게시판ID,  A.게시판명, COUNT(B.게시글ID) AS CNT<br>
+FROM 게시판 A, 게시글 B<br>
+WHERE A.게시판ID = B.게시판ID(+)<br>
+->  "FROM 게시판 LEFT OUTER JOIN 게시글" 로 처리한 것과 같음
 
 --------------------------------------------------------------------
 <h1></h1>
