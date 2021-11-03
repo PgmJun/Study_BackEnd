@@ -203,18 +203,18 @@ SQL SERVER: '' -> ''
 <h1>JOIN</h1>
 - JOIN은 관계형 데이터 베이스에서 쪼개져 있는 데이터들을 관련있는 컬럼을 기준으로 행을 합쳐주는 연산자다.<br>
 <h3>JOIN의 종류</h3>
-- 내부 조인 (INNER JOIN)
-- 교차 조인 (CROSS JOIN  <-> <highlight>CARTESIAN JOIN</highlight>)
-- 등가/동등/동일 조인(EQUI JOIN)
-- 비등가 조인(NON-EQUI JOIN)
-- 자연 조인 (NATURAL JOIN)
-- 외부 조인 (OUTER JOIN)
-- 완전 외부 조인 (FULL OUTER JOIN)
-- 왼쪽 (LEFT OUTER JOIN)
-- 오른쪽 (RIGHT OUTER JOIN)
-- 셀프 조인 (SELF JOIN)
-- 안티 조인 (ANTI JOIN)
-- 세미 조인 (SEMI JOIN)
+- 내부 조인 (INNER JOIN)<br>
+- 교차 조인 (CROSS JOIN  <-> <strong>CARTESIAN JOIN</strong>)<br>
+- 등가/동등/동일 조인(EQUI JOIN)<br>
+- 비등가 조인(NON-EQUI JOIN)<br>
+- 자연 조인 (NATURAL JOIN)<br>
+- 외부 조인 (OUTER JOIN)<br>
+- 완전 외부 조인 (FULL OUTER JOIN)<br>
+- 왼쪽 (LEFT OUTER JOIN)<br>
+- 오른쪽 (RIGHT OUTER JOIN)<br>
+- 셀프 조인 (SELF JOIN)<br>
+- 안티 조인 (ANTI JOIN)<br>
+- 세미 조인 (SEMI JOIN)<br>
 
 
 --------------------------------------------------------------------
