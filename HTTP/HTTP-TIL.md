@@ -20,30 +20,32 @@
 ---
 
 <h1>인터넷 프로토콜의 4계층</h1>
-- 애플리케이션 계층(HTTP, FTP)   
-- 전송 계층(TCP, UDP)  
-- 인터넷 계층(IP)  
-- 네트워크 인터페이스 계층    
+- 애플리케이션 계층(HTTP, FTP)<br>
+- 전송 계층(TCP, UDP)<br>
+- 인터넷 계층(IP)<br>
+- 네트워크 인터페이스 계층<br>
 
 
 ---
 
 <h1>TCP(Transmission Control Protocol)</h1>
-- IP 패킷 정보: 출발지IP, 목적지IP, etc...를 포함한 전송데이터  
-- TCP/IP 패킷 정보: 출발지IP, 목적지IP, etc... + 출발지PORT, 목적지PORT, 전송제어, 순서, 검증 정보 etc..를 포함한 전송데이터  
+- IP 패킷 정보: 출발지IP, 목적지IP, etc...를 포함한 전송데이터<br>
+- TCP/IP 패킷 정보: 출발지IP, 목적지IP, etc... + 출발지PORT, 목적지PORT, 전송제어, 순서, 검증 정보 etc..를 포함한 전송데이터<br>
 
 <h2>TCP 특징</h2>
-- 연결지향 - TCP 3 way handshake (가상 연결)    
-- 데이터 전달 보증  
-- 순서 보장  
-- 신뢰할 수 있는 프로토콜 / 현재는 대부분 TCP사용  
+- 연결지향 - TCP 3 way handshake (가상 연결)<br>
+- 데이터 전달 보증<br>
+- 순서 보장<br>
+- 신뢰할 수 있는 프로토콜 / 현재는 대부분 TCP사용<br>
 
 <h2>TCP 3 way handshake</h2>
-1. 클라이언트 -> 서버: SYN  
+1. 클라이언트 -> 서버: SYN<br>
 
-2. 서버 -> 클라이언트: SYN + ACK  
+2. 서버 -> 클라이언트: SYN + ACK<br>
 
-3. 클라이언트 -> 서버: ACK  
+3. 클라이언트 -> 서버: ACK<br>
+
+
 
 - SYN: 접속 요청  
 - ACK: 요청 수락  
@@ -53,19 +55,21 @@
 <h1>UDP(User Datagram Protocol)</h1>
 
 <h2>UDP 특징</h2>
-- 하얀 도화지에 비유(기능이 거의 없음:PORT기능이 끝)  
-- 연결지향 - TCP 3way handshake X  
-- 데이터 전달 보증 X  
-- 순서 보장 X  
-- 데이터 전달 및 순서가 보장되진 않지만, 단순하고 빠름  
-- 정리: IP와 거의 같다 + PORT -> 애플리케이션에서 추가 작업 필요  
+- 하얀 도화지에 비유(기능이 거의 없음:PORT기능이 끝)<br>
+- 연결지향 - TCP 3way handshake X<br>
+- 데이터 전달 보증 X<br>
+- 순서 보장 X<br>
+- 데이터 전달 및 순서가 보장되진 않지만, 단순하고 빠름<br>
+- 정리: IP와 거의 같다 + PORT -> 애플리케이션에서 추가 작업 필요<br>
+
 ---
 
 <h1>PORT</h1>
-한 IP로 한번에 둘 이상 연결해야 한다면? -> PORT가 이 문제를 해결  
-- 0~65535할당 가능  
-- 0~1023: 잘 알려진 포트, 사용하지 않는 것이 좋음  
-- FTP:20,21 / TELNET:23 / HTTP:80 / HTTPS:443  
+한 IP로 한번에 둘 이상 연결해야 한다면? -> PORT가 이 문제를 해결<br>
+
+- 0~65535할당 가능<br>
+- 0~1023: 잘 알려진 포트, 사용하지 않는 것이 좋음<br>
+- FTP:20,21 / TELNET:23 / HTTP:80 / HTTPS:443<br>
 
 <h2>PORT의 역할</h2>
 - 같은 IP내에서 프로세스 구분<br>
@@ -90,7 +94,7 @@ IP주소는 기억하기 어렵다 / IP주소는 변경 될 수 있다 -> 이를
 URI = URL(Locator) + URN(Name)  
 
 <h2>문법</h2>
-- scheme://[userinfo@]host[:port][/path][?query][#fragment]]  
+- scheme://[userinfo@]host[:port][/path][?query][#fragment]]<br>
 - https://www.google.com:443/search?q=hello&hl=ko
 
 <br>
@@ -111,16 +115,16 @@ URI = URL(Locator) + URN(Name)
 <hr>
 
 <h2>클라이언트 서버 구조</h2>
-- Request / Response 구조  
-- 클라리언트는 서버에 요청을 보내고, 응답을 대기  
-- 서버가 요청에 대한 결과를 만들어서 응답  
+- Request / Response 구조<br>
+- 클라리언트는 서버에 요청을 보내고, 응답을 대기<br>
+- 서버가 요청에 대한 결과를 만들어서 응답<br>
 
 <hr>
 
 <h2>무상태 프로토콜(Stateless)</h2>
-- 서버가 클라이언트의 상태를 보존X  
-- 장점: 서버 확장성 높음(스케일 아웃)  
-- 단점: 클라리언트가 추가 데이터 전송  
+- 서버가 클라이언트의 상태를 보존X<br>
+- 장점: 서버 확장성 높음(스케일 아웃)<br>
+- 단점: 클라리언트가 추가 데이터 전송<br>
 
 <h3>Stateful, Stateless 차이</h3>
 상태 유지 - Stateful<br>
@@ -165,6 +169,8 @@ ex) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지는 않
 • 서버 자원을 매우 효율적으로 사용할 수 있음<br>
 
 <h3>비 연결성의 한계와 극복</h3>
+
+
 - 한계<br>
 
 -TCP/IP 연결을 새로 맺어야 함 - 3 way handshake 시간 추가<br>
@@ -190,6 +196,8 @@ ex) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지는 않
 • 서버간에 데이터를 주고 받을 떄도 대부분 HTTP사용<br>  
 
 <h3>HTTP 메시지 구조</h3>
+
+
 - start-line 시작라인  
 
 - header 헤더  
