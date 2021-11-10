@@ -1,7 +1,7 @@
 # HTTP-TIL
 
 ---
-# IP(Internet Protocol)
+# #IP(Internet Protocol)
 - 지정한 IP주소에 데이터 전달    
 - 패킷이라는 통신 단위로 데이터 전달  
 - IP 패킷 정보: 출발지IP, 목적지IP, etc...를 포함한 전송데이터   
@@ -15,7 +15,8 @@
 
 ---
 
-<h1>인터넷 프로토콜의 4계층</h1>
+# #인터넷 프로토콜의 4계층
+
 - 애플리케이션 계층(HTTP, FTP)<br>
 - 전송 계층(TCP, UDP)<br>
 - 인터넷 계층(IP)<br>
@@ -24,7 +25,8 @@
 
 ---
 
-<h1>TCP(Transmission Control Protocol)</h1>
+# #TCP(Transmission Control Protocol)
+
 - IP 패킷 정보: 출발지IP, 목적지IP, etc...를 포함한 전송데이터<br>
 - TCP/IP 패킷 정보: 출발지IP, 목적지IP, etc... + 출발지PORT, 목적지PORT, 전송제어, 순서, 검증 정보 etc..를 포함한 전송데이터<br>
 
@@ -48,7 +50,7 @@
 
 ---
 
-<h1>UDP(User Datagram Protocol)</h1>
+# #UDP(User Datagram Protocol)
 
 <h2>UDP 특징</h2>
 - 하얀 도화지에 비유(기능이 거의 없음:PORT기능이 끝)<br>
@@ -60,7 +62,8 @@
 
 ---
 
-<h1>PORT</h1>
+# #PORT
+
 한 IP로 한번에 둘 이상 연결해야 한다면? -> PORT가 이 문제를 해결<br>
 
 - 0~65535할당 가능<br>
@@ -73,7 +76,8 @@
 
 ---
 
-<h1>DNS(Domain Name System)</h1>
+# #DNS(Domain Name System)
+
 IP주소는 기억하기 어렵다 / IP주소는 변경 될 수 있다 -> 이를 해결해 주는 것이 DNS  
 
 - 전화번호부에 비유  
@@ -86,7 +90,8 @@ IP주소는 기억하기 어렵다 / IP주소는 변경 될 수 있다 -> 이를
 
 ---
 
-<h1>URI(Uniform Resource Identifier)</h1>
+# #URI(Uniform Resource Identifier)
+
 URI = URL(Locator) + URN(Name)  
 
 <h2>문법</h2>
@@ -102,7 +107,8 @@ URI = URL(Locator) + URN(Name)
 - 쿼리 파라미터(q=hello&hl=ko)
 
 ---
-<h1>HTTP의 특징</h1>
+# #HTTP의 특징
+
 - 클라이언트/서버 구조<br>
 - 무상태 프로토콜(StateLess), 비연결성<br>
 - HTTP 메시지<br>
@@ -214,7 +220,7 @@ ex) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지는 않
 
 
 ---
-# HTTP 메서드
+# #HTTP 메서드
 
 ### 주요 메서드
 
@@ -587,7 +593,7 @@ Host: localhost:8080
 
 
 --------------------------------------------------------------------
-<h1>HTTP 메서드의 속성</h1>
+# #HTTP 메서드의 속성
 
 - 안전(Safe Methods)
 - 멱등(Idempotent Methods)
@@ -624,7 +630,7 @@ Host: localhost:8080
 - POST, PATCH는 본문 내용까지 캐시 키로 고려해야 하는데, 구현이 쉽지 않음  
 
 --------------------------------------------------------------------
-# 클라이언트에서 서버로 데이터 전송
+# #클라이언트에서 서버로 데이터 전송
 
 - 쿼리 파라미터를 통한 데이터 전송  
   - GET  
@@ -848,7 +854,145 @@ Content-Type: image/png
 
 
 --------------------------------------------------------------------
-<h1></h1>
+# #HTTP API 설계 예시
+
+- HTTP API - 컬렉션
+  - POST 기반 등록
+  - ex) 회원 관리 API 제공
+- HTTP API - 스토어
+  - PUT 기반 등록
+  - ex) 정적 컨텐츠 관리, 원격 파일 관리
+- HTML FORM 사용
+  - 웹 페이지 회원 관리
+  - GET, POST만 지원
+
+
+
+## 회원 관리 시스템
+
+### API 설계 - POST 기반 등록
+
+- 회원 목록 /members -> **GET**  
+- 회원 등록 /members -> **POST**  
+- 회원 조회 /members/{id} -> **GET** 
+- 회원 수정 /members/{id} -> **PATCH, PUT, POST**  
+- 회원 삭제 /members/{id} ->**DELETE**  
+
+
+
+### POST - 신규 자원 등록 특징
+
+- 클라이언트는 등록될 리소스의 URI를 모른다.
+
+  - 회원 등록 /members -> POST  
+  - POST /members
+
+- 서버가 새로 등록된 리소스 URI를 생성해준다.
+
+  - HTTP/1.1 201 Created  
+
+    Location: /members/100
+
+- 컬렉션(Collection)
+
+  - 서버가 관리하는 리소스 디렉토리
+  - 서버가 리소스의 URI를 생성하고 관리
+  - 여기서 컬렉션은 /members
+
+
+
+## 파일 관리 시스템
+
+### API 설계 - PUT 기반 등록
+
+- 파일 목록 /files -> **GET**
+- 파일 조회 /files/{filename} -> **GET**
+- 파일 등록 /files/{filename} -> **PUT**
+- 파일 삭제 /files/{filename} -> **DELETE**
+- 파일 대량 등록 /files -> **POST**
+
+
+
+### PUT - 신규 자원 등록 특징
+
+- 클라이언트가 리소스 URI를 알고 있어야 한다.  
+  - 파일 등록 /files/{filename} -> PUT  
+  - PUT /files/star.jpg  
+- 클라이언트가 직접 리소스의 URI를 지정한다.  
+- 스토어(Store)  
+  - 클라이언트가 관리하는 리소스 저장소  
+  - 클라이언트가 리소스의 URI를 알고 관리  
+  - 여기서 스토어는 /files  
+
+
+
+## HTML FORM 사용
+
+- HTML FORM은 **GET, POST만 지원**  
+- AJAX 같은 기술을 사용해서 해결 가능 -> 회원 API 참고  
+- 여기서는 순수 HTML, HTML FORM 이야기  
+- GET, POST만 지원하므로 제약이 있음  
+
+
+
+### HTML FORM 기반 등록
+
+- 회원 목록 /members -> **GET**  
+- 회원 등록 폼 /members/new -> **GET ** 
+- 회원 등록 /members/new, /members -> **POST**  
+- 회원 조회 /members/{id} -> **GET**  
+- 회원 수정 폼 /members/{id}/edit -> **GET ** 
+- 회원 수정 /members/{id}/edit, /members/{id} -> **POST**  
+- 회원 삭제 /members/{id}/delete -> **POST**  
+
+
+
+### HTML FORM 기반 등록 특징
+
+- HTML FORM은 **GET, POST만 지원**  
+- 컨트롤 URI  
+  - GET, POST만 지원하므로 제약이 있음  
+  - 이런 제약을 해결하기 위해 동사로 된 리소스 경로 사용  
+  - POST의 /new, edit, delete가 컨트롤 URI  
+  - HTTP 메서드로 해결하기 애매한 경우 사용(HTTP API 포함)  
+
+
+
+## 정리
+
+- HTTP API - 컬렉션  
+  - POST 기반 등록  
+  - 서버가 리소스 URI 결정  
+- HTTP API - 스토어  
+  - PUT 기반 등록  
+  - 클라이언트가 리소스 URI 결정  
+- HTML FORM 사용  
+  - 순수 HTML + HTML form 사용  
+  - GET, POST만 지원  
+  - GET, POST만 사용할 경우 컨트롤 URI 사용  
+
+
+
+#### 참고하면 좋은 URI 설계 개념
+
+- 문서(document)  
+  - 단일 개념(파일 하나, 객체 인스턴스, 데이터베이스 row)  
+  - 예) /members/100, /files/star.jpg  
+- 컬렉션(collection)  
+  - 서버가 관리하는 리소스 디렉터리  
+  - 서버가 리소스의 URI를 생성하고 관리  
+  - 예) /members  
+- 스토어(store)  
+  - 클라이언트가 관리하는 자원 저장소  
+  - 클라이언트가 리소스의 URI를 알고 관리  
+  - 예) /files  
+- 컨트롤러(controller), 컨트롤 URI  
+  - 문서, 컬렉션, 스토어로 해결하기 어려운 추가 프로세스 실행  
+  - 동사를 직접 사용  
+  - 예) /members/{id}/delete  
+
+
+
 --------------------------------------------------------------------
 <h1></h1>
 --------------------------------------------------------------------
