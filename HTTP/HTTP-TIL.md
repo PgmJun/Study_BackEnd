@@ -1957,17 +1957,298 @@ Accept: text/*, text/plain, text/plain;format=flowed, */*
 - 분할 전송
 - 범위 전송
 
-(25p)
 
 
 
---------------------------------------------------------------------
-<h1></h1>
---------------------------------------------------------------------
-<h1></h1>
---------------------------------------------------------------------
-<h1></h1>
---------------------------------------------------------------------
-<h1></h1>
---------------------------------------------------------------------
-<h1></h1>
+
+#### 단순 전송
+
+**Content-Length**
+
+```
+[클라이언트]->[서버]
+GET /event
+
+->
+
+[응답]
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+*Content-Length: 3423*
+
+<html>
+ <body>...</body>
+</html>
+
+```
+
+
+
+#### 압축 전송
+
+**Content-Encoding**
+
+```
+[클라이언트]->[서버]
+GET /event
+
+
+
+[응답]
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+*Content-Encoding: gzip*
+Content-Length: 521
+
+lkj123kljoiasudlkjaweioluywlnfdo912u34ljko98udjkl
+
+```
+
+
+
+#### 분할 전송
+
+**Transfer-Encoding**
+
+```
+[클라이언트]->[서버]
+GET /event
+
+
+
+[응답]
+HTTP/1.1 200 OK
+Content-Type: text/plain
+*Transfer-Encoding: chunked*
+
+5
+Hello
+5
+World
+0
+\r\n
+```
+
+**Transfer-Encoding: chunked**
+
+리소스를 여러 덩어리(chunk)로 나눠서 응답하는 방식으로
+
+**크기, 내용**이 한 덩어리이다.
+
+ex)
+
+```
+5 : 5byte
+hello : 내용
+```
+
+
+
+이렇듯 body에 **크기**가 같이 기록 되기 때문에
+
+**Content-Length는 사용이 불가하다**
+
+
+
+
+
+#### 범위 전송
+
+**Range, Content-Range**
+
+```
+[클라이언트]->[서버]
+GET /event
+Range: bytes=1001-2000
+
+
+[응답]
+HTTP/1.1 200 OK
+Content-Type: text/plain
+*Content-Range: bytes 1001-2000 / 2000*
+
+qweqwe1l2iu3019u2oehj1987askjh3q98y
+
+```
+
+**Content-Range: bytes 1001-2000 / 2000**
+
+= 총 2000byte의 데이터 중에 1001~2000byte의 데이터만 전송했다는 뜻
+
+
+
+클라이언트가 어떤 사이트의 서버에서 총 2000byte 크기의 데이터를 이미 1000까지는 받았다고 가정하자
+
+여기서 이 클라이언트는 사이트 재방문시에 서버로부터 1-1000byte까지는 받을 필요가 없다.
+
+그럴 때에 Content-Range로 데이터의 범위를 지정하여 1001-2000byte만 받게할 수 있는 것이다.
+
+
+
+<br>
+
+
+
+## 일반 정보
+
+- From: 유저 에이전트의 이메일 정보
+- Referer: 이전 웹페이지 주소
+- User-Agent: 유저 에이전트 애플리케이션 정보
+- Server: 요청을 처리하는 오리진 서버의 소프트웨어 정보
+- Date: 메시지가 생성된 날짜
+
+
+
+### From
+
+**유저 에이전트의 이메일 정보**
+
+- 일반적으로 잘 사용되지 않음
+- 검색 엔진 같은 곳에서, 주로 사용
+- 요청에서 사용
+
+
+
+### Referer
+
+**이전 웹페이지 주소**
+
+- 현재 요청된 페이지의 이전 웹 페이지 주소
+- A -> B로 이동하는 경우 B를 요청할 때 Referer: A 를 포함해서 요청
+- Referer를 사용해서 유입 경로 분석 가능
+- 요청에서 사용
+- 참고: referer는 단어 referrer의 오타
+
+
+
+### User-Agent
+
+**유저 에이전트 애플리케이션 정보**
+
+- user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/ 537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+- 클리이언트의 애플리케이션 정보(웹 브라우저 정보, 등등)
+- 통계 정보
+- 어떤 종류의 브라우저에서 장애가 발생하는지 파악 가능
+- 요청에서 사용
+
+
+
+### Server
+
+**요청을 처리하는 ORIGIN 서버의 소프트웨어 정보**
+
+- Server: Apache/2.2.22 (Debian)
+- server: nginx
+- 응답에서 사용
+
+
+
+### Date
+
+**메시지가 발생한 날짜와 시간**
+
+- Date: Tue, 15 Nov 1994 08:12:31 GMT
+- 응답에서 사용
+
+
+
+<br>
+
+
+
+## 특별한 정보
+
+- Host: 요청한 호스트 정보(도메인)
+- Location: 페이지 리다이렉션
+- Allow: 허용 가능한 HTTP 메서드
+- Retry-After: 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
+
+
+
+### Host
+
+**요청한 호스트 정보(도메인)**
+
+```
+GET /search?q=hello&hl=ko HTTP/1.1
+Host: www.google.com
+```
+
+- 요청에서 사용
+- 필수
+- 하나의 서버가 여러 도메인을 처리해야 할 때
+- 하나의 IP주소에 여러 도메인이 적용되어 있을 때
+
+
+
+가상호스트를 통해 여러 도메인을 한번에 처리할 수 있는 서버**(IP: 200.200.200.2)**에
+
+**aaa.com / bbb.com / ccc.com** 이라는 도메인이 있다고 가정하자
+
+
+
+```
+GET /hello HTTP/1.1
+```
+
+만약 클라이언트가 bbb.com이라는 도메인에 /hello를 요청하기 위해
+
+bbb.com의 IP주소 200.200.200.2에 요청을 보내버리면
+
+200.200.200.2의 IP를 가진 서버에는 3개의 도메인주소가 있어 3개 중 어디에서 /hello에 대한 응답을 줘야하는지 서버는 알 수 없다.
+
+
+
+이런 상황이 발생할 수 있기 때문에 Host를 필수 정보로 사용한다
+
+```
+GET /hello HTTP/1.1
+Host: bbb.com
+```
+
+
+
+
+
+### Location
+
+**페이지 리다이렉션**
+
+- 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동(리다이렉트)
+- 응답코드 3xx에서 설명
+- 201(Created)의 Location값은 요청에 의해 생성된 리소스의 URI
+- 3xx(Redirection)의 Location 값은 요청을 자동으로 리다이렉션 하기 위한 대상 리소스를 가리킴
+
+
+
+
+
+### Allow
+
+**허용 가능한 HTTP 메서드**
+
+- 405(Method Not Allowed) 에서 응답에 포함해야함
+- Allow: GET, HEAD, PUT
+
+
+
+
+
+### Retry-After
+
+**유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간**
+
+- 503(Service Unavailable): 서비시가 언제까지 불능인지 알려줄 수 있음
+- Retry-After: Fri, 31 Dec 1999 23:59:59 GMT (날짜 표기)
+- Retry-After: 120 (초단위 표기)
+
+
+
+
+
+
+
+  
+
+
+
