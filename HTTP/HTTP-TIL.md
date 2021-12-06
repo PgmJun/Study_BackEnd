@@ -1,5 +1,32 @@
 # HTTP-TIL
 
+### 목차
+
+- [HTTP-TIL(Today I Learned)](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-til)
+
+  - [IP](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#ipinternet-protocol) (Internet Protocol)
+  - [인터넷 프로토콜의 4계층](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EC%9D%B8%ED%84%B0%EB%84%B7-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%9D%98-4%EA%B3%84%EC%B8%B5)
+  - [TCP](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#ipinternet-protocol) (Transmission Control Protocol)
+  - [UDP ](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#udpuser-datagram-protocol)(User Datagram Protocol)
+  - [PORT](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#port)
+  - [DNS](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#dnsdomain-name-system) (Domain Name System)
+  - [URI](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#uriuniform-resource-identifier) (Uniform Resource Identifier)
+  - [HTTP의 특징](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http%EC%9D%98-%ED%8A%B9%EC%A7%95)
+  - [HTTP 메서드](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-%EB%A9%94%EC%84%9C%EB%93%9C)
+  - [HTTP 메서드의 속성](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-%EB%A9%94%EC%84%9C%EB%93%9C%EC%9D%98-%EC%86%8D%EC%84%B1)
+  - ['Client To Server' 데이터 전송](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EC%84%9C%EB%B2%84%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1)
+  - [HTTP API 설계](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-api-%EC%84%A4%EA%B3%84-%EC%98%88%EC%8B%9C)
+  - [HTTP 상태 코드](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-%EC%83%81%ED%83%9C-%EC%BD%94%EB%93%9C)
+
+  - [HTTP 헤더](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#http-%ED%97%A4%EB%8D%94)
+    - [쿠키](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EC%BF%A0%ED%82%A4)
+    - [캐시](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EC%BA%90%EC%8B%9C-%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91)
+    - [검증 헤더](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EA%B2%80%EC%A6%9D-%ED%97%A4%EB%8D%94%EC%99%80-%EC%A1%B0%EA%B1%B4%EB%B6%80-%EC%9A%94%EC%B2%AD1)
+    - [캐시 제어 헤더](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EC%BA%90%EC%8B%9C-%EC%A0%9C%EC%96%B4-%ED%97%A4%EB%8D%94)
+
+
+
+
 ---
 # #IP(Internet Protocol)
 - 지정한 IP주소에 데이터 전달    
