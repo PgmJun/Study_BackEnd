@@ -16,7 +16,7 @@
 
 
 
-![web-design-template-copy-space-concept](C:\Users\chltm\Downloads\web-design-template-copy-space-concept.jpg)
+![httpsdsin wordpress com20130316sql-join-cheat-sheet](https://user-images.githubusercontent.com/84304802/144785067-27070961-1601-446f-b79e-160d87b34e95.png)
 
 
 
@@ -36,8 +36,7 @@
 - 기초 내용 부터 몰랐던 내용 헷갈리는 내용 공부한 뒤 기록
 
 
-
-<img src="C:\Users\chltm\OneDrive\바탕 화면\1026.jpg" alt="1026" style="zoom:30%;" />
+![1026](https://user-images.githubusercontent.com/84304802/144785044-101fe2e2-1eb6-4b34-b1b3-aa8c6ae50e98.jpg)
 
 
 
