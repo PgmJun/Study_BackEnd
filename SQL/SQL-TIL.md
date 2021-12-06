@@ -286,7 +286,8 @@ SQL SERVER: '' -> ''
 - 셀프 조인 (SELF JOIN)<br>
 - 안티 조인 (ANTI JOIN)<br>
 - 세미 조인 (SEMI JOIN)<br>
-
+<br>
+<br>
 ![httpsdsin wordpress com20130316sql-join-cheat-sheet](https://user-images.githubusercontent.com/84304802/144785067-27070961-1601-446f-b79e-160d87b34e95.png)
 
 [출처](httpsdsin.wordpress.com20130316sql-join-cheat-sheet)
