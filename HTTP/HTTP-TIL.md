@@ -24,6 +24,11 @@
     - [검증 헤더](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EA%B2%80%EC%A6%9D-%ED%97%A4%EB%8D%94%EC%99%80-%EC%A1%B0%EA%B1%B4%EB%B6%80-%EC%9A%94%EC%B2%AD1)
     - [캐시 제어 헤더](https://github.com/PgmJun/Study_BackEnd/blob/main/HTTP/HTTP-TIL.md#%EC%BA%90%EC%8B%9C-%EC%A0%9C%EC%96%B4-%ED%97%A4%EB%8D%94)
 
+  
+  
+  
+  
+  
 
 
 
