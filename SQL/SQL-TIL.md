@@ -340,7 +340,7 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
   - OLAP 환경에 적합함
   - **EQUI join(=) 조건에서만 동작**
 
-# 트랜잭션(Transaction)이란?
+# 트랜잭션(Transaction)
 
   - 트랜잭션은 업무처리를 위한 논리적인 작업 단위를 말합니다.
 
