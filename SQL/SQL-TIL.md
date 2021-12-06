@@ -1,5 +1,51 @@
+
+
+
+
 # SQL-TIL
------------------------------------------------------------------------------------------
+
+
+
+### 목차
+
+- 이론
+  - [무결성](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EB%AC%B4%EA%B2%B0%EC%84%B1)
+  - [정규화](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%A0%95%EA%B7%9C%ED%99%94)
+  - [SQL 문장의 종류](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#sql-%EB%AC%B8%EC%9E%A5-%EC%A2%85%EB%A5%98)
+  - [식별자의 종류](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%8B%9D%EB%B3%84%EC%9E%90%EC%9D%98-%EC%A2%85%EB%A5%98)
+  - [제약조건](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%A0%9C%EC%95%BD%EC%A1%B0%EA%B1%B4)
+  - 서브쿼리
+    - [서브쿼리에 따른 명칭](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC%EC%9D%98-%EC%9C%84%EC%B9%98%EC%97%90-%EB%94%B0%EB%A5%B8-%EB%AA%85%EC%B9%AD)
+    - [서브쿼리의 반환 값에 따른 서브쿼리 종류](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC%EC%9D%98-%EB%B0%98%ED%99%98-%EA%B0%92%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-%EC%A2%85%EB%A5%98)
+  - [저장 모듈](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%A0%80%EC%9E%A5-%EB%AA%A8%EB%93%88)
+  - [옵티마이저](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
+  - [순수 관계 연산자](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%88%9C%EC%88%98-%EA%B4%80%EA%B3%84-%EC%97%B0%EC%82%B0%EC%9E%90)
+  - [DB 엔진에 따른 '' NULL처리 여부](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#insert-%EA%B5%AC%EB%AC%B8%EC%97%90%EC%84%9C-%EC%82%BD%EC%9E%85-%EC%8B%9C-null%EC%B2%98%EB%A6%AC)
+  - [인덱스](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%9D%B8%EB%8D%B1%EC%8A%A4)
+  - [트랜잭션](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98transaction)
+
+
+
+- 문법
+  - [CREATE TABLE](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#create-table)
+  - [ALTER TABLE](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#create-table)
+  - [CHAR / VARCHAR](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#chars-varchars%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90)
+  - [GROUP BY, HAVING](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#group-by-having%EC%A0%88)
+  - [ON DELETE / UPDATE](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#on-deleteupdate)
+  - [DELETE / TRUNCATE](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#delete--truncate-table-%EC%B0%A8%EC%9D%B4)
+  - [UNION / UNIONALL](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#union--unionall)
+  - [JOIN 종류](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#join)
+  - [JOIN에서의 (+) 기호](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#leftright-outer-join) 
+  - [COALESCE](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#coalesce)
+  - [ORACLE 분석함수(RANK)](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%98%A4%EB%9D%BC%ED%81%B4-%EB%B6%84%EC%84%9D%ED%95%A8%EC%88%98rank-over-row_number-over)
+  - [NLJoin / SMJoin / HashJoin](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#nljoin-smjoin-hashjoin)
+
+---
+
+
+
+
+
 <h1>무결성</h1>
 
 무결성 제약조건의 주요 목적은 데이터베이스에 저장된 데이터의 무결성을 보장하고 데이터베이스의 상태를 일관되게 유지하는 것입니다. 그래서 이를 위해 필요한 세부 규칙도 정의하고 있습니다. 데이트베이스가 삽입, 삭제, 수정, 연산으로 상태가 변하더라도 무결성 제약조건은 반드시 지켜져야 합니다.
@@ -30,19 +76,25 @@ null 무결성은 특정 속성값에는 null 값을 가질 수 없다는 규칙
 
 6. 고유 무결성 : 특정 속성값은 서로 달라야 함 <br>
 고유 무결성은 특정 속성에 삽입되는 데이터는 고유한 값을 가져야 한다는 규칙입니다. 이말은 즉, 각 튜플에서 하나의 속성값은 중복된 값이 없는 각각 서로 다른 값을 가져야 한다는 의미입니다. 예를 들어 이름, 나이, 사는 곳과 같은 속성은 튜프들이 서로 같은 값을 가질 수 있지만 고객 아이디의 경우 각 튜플을 서로 다른 값을 가져야 합니다. 
---------------------------------------------------------------------
+
+
+
+
+
+
 <h1>정규화</h1>
 
 - 1차 정규화:<br>
 같은 성격과 내용의 컬럼이 연속적으로 나타나는 컬럼이 존재할 때, 해당 컬럼을 제거하고 기본테이블의 PK를 추가해 새로운 테이블을 생성하고, 기존의 테이블과 1:N의 관계 형성
-
 - 2차 정규화:<br>
 PK가 여러 키로 구성된 복합키(Composite Primary Key)로 구성된 경우가 2차 정규화의 대상이 되며, 복합키 전체에 의존하지 않고 복합키의 일부분에만 종속되는 속성들이 존재할 경우 (즉, 부분적 함수 종속 관계) 이를 분리하는 것이다.
-
 - 3차 정규화<br>
 테이블의 키가 아닌 컬럼들은 기본키에 의존해야 하는데 겉으로는 그런 것처럼 보이지만 실제로는 기본키가 아닌 다른 일반 컬럼에 의존하는 컬럼들이 있을 수 있다. 이를 (이전적 함수 종속 관계)라고 한다. 제 3정규화는 PK에 의존하지 않고 일반컬럼에 의존하는 컬럼들을 분리한다.
 
---------------------------------------------------------------------
+
+
+
+
 <h1>SQL 문장 종류</h1>
 
 - DDL(Data Definition Language) 데이터 정의어:<br>
@@ -57,7 +109,10 @@ REVOKE, GRANT
 - TCL(Transaction Control Language) 트렌젝션 제어어:<br>
 COMMIT, ROLLBACK
 
---------------------------------------------------------------------
+
+
+
+
 <h1>식별자의 종류</h1>
 
 - 대표성 여부:<br>
@@ -77,7 +132,10 @@ COMMIT, ROLLBACK
 -본질식별자: 업무에 의해 만들어지는 식별자<br>
 -인조식별자: 업무적으로 만들어지지는 않지만 원조식별자가 복잡한 구성을 가지고 있기 때문에 인위적으로 만든 
 
---------------------------------------------------------------------
+
+
+
+
 <h1>CREATE TABLE</h1>
 
 - 문장 작성법: CREATE TABLE 테이블이름 ( 속성 자료형 설정, ... ); <br>
@@ -90,40 +148,38 @@ COMMIT, ROLLBACK
 
 
 
---------------------------------------------------------------------
+
+
 <h1>제약조건</h1>
 
 - Primary key(기본키): 중복X(고유함), NOT NULL
-
 - Unique key(고유키): 중복X(고유함)
-
 - NOT NULL: NULL 금지
-
 - CHECK: 입력 값 범위 제한<br>
 사용법EX) CREATE TABLE EXAM(A INT CHECK(A IN(1,2,3))); || SELECT * FROM EXAM WHERE AGE IN(22,23);
 
 
---------------------------------------------------------------------
+
+
+
 <h1>테이블 구조변경(DDL)</h1>
 
 - 컬럼 추가:<br>
 ALTER TABLE 테이블명 ADD 컬럼명 자료형;
-
 - 컬럼 제거:<br>
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
-
 - 컬럼 데이터 유형 조건 등 변경:<br>
 ORACLE) ALTER TABLE 테이블명 MODIFY(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
 SQL SERVER) ALTER TABLE 테이블명 ALTER(컬럼명 데이터 유형 DEFAULT식 NOT NULL);<br>
-
 - 컬럼명 변경:<br>
 ALTER TABLE 테이블명 RENAME COLUMN 컬럼명 TO 뉴컬럼명<br>
-
 - 제약조건 삭제:<br>
 ALTER TABLE 테이블명 DROP CONSTRAINT 조건명;
 
 
---------------------------------------------------------------------
+
+
+
 <h1>CHAR(s), VARCHAR(s)의 차이점</h1>
 
 - CHAR(s): 고정길이<br>
@@ -133,33 +189,41 @@ ex) CHAR(3) 'aa' = 'aa '<br>
 ex) VARCHAR(3) 'aa' != 'aa '<br>
 
 
---------------------------------------------------------------------
+
+
+
 <h1>GROUP BY, HAVING절</h1>
 
-- GROUP BY: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼]<br>
+- GROUP BY: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼]
 
-- HAVING: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼] HAVING [GROUP BY로 묶여 집계된 값에 조건추가]<br>
-ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점수) > 150;<br>
-=학생테이블에서 학급반을 GROUP BY로 묶고 반별로 학생들 점수의 합을 150점 이상인 반만 출력<br>
+- HAVING: SELECT [GROUP BY로 묶일 칼럼] [GROUP BY로 묶여 집계할 값] FROM 테이블명 GROUP BY [그룹으로 묶을 칼럼] HAVING [GROUP BY로 묶여 집계된 값에 조건추가]
 
-*GROUP BYY절에는 ALIAS사용 불가 <br>
-*집계함수는 WHERE절에 올 수 없으므로 HAVING절에 조건을 추가 <br>
+- ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점수) > 150;
+
+  = 학생테이블에서 학급반을 GROUP BY로 묶고 반별로 학생들 점수의 합을 150점 이상인 반만 출력
 
 
---------------------------------------------------------------------
+
+*GROUP BYY절에는 ALIAS사용 불가 
+
+*집계함수는 WHERE절에 올 수 없으므로 HAVING절에 조건을 추가 
+
+
+
+
+
 <h1>ORDER BY절</h1>
 
 - SQL문으로 조회된 데이터를 다양한 목적에 맞게 특정 칼럼을 기준으로 정렬<br>
-
 - ALIAS사용가능<br>
-
 - DEFAULT값은 ASC(오름차순)<br>
-
 - SQL구문 제일 마지막에 위치<br>
-
 - 사용법: SELECT * FROM 테이블이름 ORDER BY 점수 DESC;<br>
 
---------------------------------------------------------------------
+
+
+
+
 <h1>ON DELETE/UPDATE</h1>
 
 #on DELETE SET NULL
@@ -176,14 +240,18 @@ ex) SELECT 학급반, SUM(점수) FROM 학생 GROUP BY 학급반 HAVING SUM(점�
 사용예시:<br>
 FOREIGN KEY(A) REFERENCES B(C) ON DELETE CASCADE
 
---------------------------------------------------------------------
+
+
+
+
 <h1>DELETE / TRUNCATE TABLE 차이</h1>
 - DELETE: DELETE 문은 행을 한번에 하나씩 제거하고 삭제된 각 행에 대해 트랜잭션 로그에 항목을 기록<br>
 - TRUNCATE TABLE: 테이블의 데이터를 저장하는 데 사용되는 데이터 페이지의 할당을 취소하는 방식으로 데이터를 제거하며 페이지 할당 취소만을 트랜잭션 로그에 기록
 
 
 
---------------------------------------------------------------------
+
+
 <h1>UNION / UNIONALL</h1>
 - Union과 UnionAll은 두 쿼리문을 하나로 합쳐준다.<br>
 -출력: Union) 중복값 제거해서 결과출력 / UnionAll) 중복된 값도 전부 다 출력<br>
@@ -194,12 +262,15 @@ FOREIGN KEY(A) REFERENCES B(C) ON DELETE CASCADE
 
 
 
---------------------------------------------------------------------
+
 <h1>INSERT 구문에서 ''삽입 시 NULL처리</h1>
 ORACLE: '' -> NULL
 SQL SERVER: '' -> ''
 
---------------------------------------------------------------------
+
+
+
+
 <h1>JOIN</h1>
 - JOIN은 관계형 데이터 베이스에서 쪼개져 있는 데이터들을 관련있는 컬럼을 기준으로 행을 합쳐주는 연산자다.<br>
 <h3>JOIN의 종류</h3>
@@ -216,8 +287,14 @@ SQL SERVER: '' -> ''
 - 안티 조인 (ANTI JOIN)<br>
 - 세미 조인 (SEMI JOIN)<br>
 
+![httpsdsin.wordpress.com20130316sql-join-cheat-sheet](C:\Users\chltm\OneDrive\바탕 화면\httpsdsin.wordpress.com20130316sql-join-cheat-sheet.png)
 
---------------------------------------------------------------------
+[출처](httpsdsin.wordpress.com20130316sql-join-cheat-sheet)
+
+
+
+
+
 <h1>LEFT/RIGHT OUTER JOIN</h1>
 - 조인조건에 성립하는 부분과 지정해준 LEFT/RIGHT의 기준이 되는 테이블의 로우를 출력해주는 JOIN이다<br>
 기준이 되는 반대쪽에 (+)를 표시하면 OUTER JOIN을 나타낼 수 있다.<br>
@@ -226,31 +303,46 @@ FROM 게시판 A, 게시글 B<br>
 WHERE A.게시판ID = B.게시판ID(+)<br>
 ->  "FROM 게시판 LEFT OUTER JOIN 게시글" 로 처리한 것과 같음
 
---------------------------------------------------------------------
+
+
+
+
 <h1>서브쿼리의 위치에 따른 명칭</h1>
 - SELECT문에 있는 서브쿼리: 스칼라 서브쿼리<br>
  -스칼라 서브쿼리는 1행만 반환<br>
 - FROM절에 있는 서브쿼리: 인라인 뷰<br>
 - WHERE절에 있는 서브쿼리: 서브쿼리
 
---------------------------------------------------------------------
+
+
+
+
 <h1>서브쿼리의 반환 값에 따른 서브쿼리 종류</h1>
 - 단일 행 서브쿼리: 서브쿼리 결과가 1행 [비교연산자: =, <, >, <=, >=, <>]<br>
 - 다중 행 서브쿼리: 서브쿼리 결과가 여러행 [비교연산자: IN, ALL, ANY, SOME, EXISTS]<br>
 - 다중 컬럼 서브쿼리: 서브쿼리 결과가 여러 컬럼
 
---------------------------------------------------------------------
+
+
+
+
 # COALESCE
+
 - 처음으로 NULL값이 아닌 값을 발견하면 그 값을 반환  
 - ex) SELECT COALESCE (컬럼1, 컬럼2, ... , 컬럼N) FROM 테이블  
 여기서 처음으로 NULL이 아닌 컬럼을 결과값으로 리턴한다.  
 
---------------------------------------------------------------------
+
+
+
+
 # 오라클 분석함수(RANK OVER(), ROW_NUMBER() OVER())
 
 - RANK OVER(): 동일 순위인 경우 1,1,3 형식으로 출력
 - ROW_NUMBER OVER(): 동일 순위인 경우 1,2,3 형식으로 출력
 - DENSE_RANK(): 동일 순위인 경우 1,1,2 형식으로 출력
+
+
 
 
 
@@ -261,7 +353,10 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
 - JOIN
 - DIVIDE
 
---------------------------------------------------------------------
+
+
+
+
 # 저장 모듈
 
 - SQL문을 데이터 베이스 서버에 저장하여 사용자와 애플리케이션 사이에서 공유할 수 있도록 만든
@@ -277,6 +372,8 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
 
 
 
+
+
 # 옵티마이저
 
 - 규칙기반 옵티마이저:
@@ -286,6 +383,8 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
 - 비용기반 옵티마이저:
 
   처리 비용이 가장 적은 실행계획 선택, 데이터 딕셔너리(Data Dictionary)의 **통계정보나 DBMS의 차이로 같은 쿼리도 다른 실행계획이 생성될 수 있음**, 실행계획의 예측 및 제어가 어려움
+
+
 
 
 
@@ -304,6 +403,10 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
   - IOT(Index-Organized Table): 
 
     인덱스키가 붙은 칼럼으로 구성된 테이블, 인덱스가 원래 테이블을 참조하지 않음, 클러스터형 인덱스와 유사함
+
+
+
+
 
 # NLJoin SMJoin HashJoin
 
@@ -331,65 +434,55 @@ WHERE A.게시판ID = B.게시판ID(+)<br>
 
   
 
-  
-
   *테이블이 커서 소트 부하가 심할 때 유리함*
 
   - **인덱스가 존재하지 않아도 사용가능**
-
   - OLAP 환경에 적합함
   - **EQUI join(=) 조건에서만 동작**
 
+
+
+
+
 # 트랜잭션(Transaction)이란?
 
-  - 트랜잭션은 업무처리를 위한 논리적인 작업 단위를 말합니다.
+  - 업무처리를 위한 논리적인 작업 단위
 
 
 
-1. 트랜잭션의 특징
+### 트랜잭션의 특징
 
-1. 원자성(Atomicity) 
+1. #### 원자성(Atomicity) 
 
-  :  트랜잭션은 더이상 분해가 불가능한 업무의 최소 단위이므로, 전부 처리되거나, 아예 하나도 처리되지 않아야 합니다.
-
-
-
-2. 일관성(Consistency)
-
-  : 일관된 상태의 데이터베이스에서 하나의 트랜잭션이 성공적으로 작업을 완료하고 난 후에도 데이터베이스는 여전히 일관된 상태여야 합니다.
+트랜잭션은 더이상 분해가 불가능한 업무의 최소 단위이므로, 전부 처리되거나, 아예 하나도 처리되지 않아야 합니다.
 
 
 
-3. 격리성,독립성(Isolation)
+2. #### 일관성(Consistency)
 
-  : 하나의 트랜잭션이 작업을 하고 있을 때 다른 트랜잭션은 접근할 수
+일관된 상태의 데이터베이스에서 하나의 트랜잭션이 성공적으로 작업을 완료하고 난 후에도 데이터베이스는 여전히 일관된 상태여야 합니다.
+
+
+
+3. #### 격리성,독립성(Isolation)
+
+하나의 트랜잭션이 작업을 하고 있을 때 다른 트랜잭션은 접근할 수
 
  없습니다.
 
 
 
- 가. 낮은 단계의 격리성 수준에서 발생할 수 있는 현상들입니다.
+- 낮은 단계의 격리성 수준에서 발생할 수 있는 현상
 
-   1) Dirty Read : 다른 트랜잭션에 의해 수정되었지만 아직 커밋되지 않은데이터를 읽는 것을 의미합니다.
+   1) **Dirty Read** : 다른 트랜잭션에 의해 수정되었지만 아직 커밋되지 않은데이터를 읽는 것을 의미.
 
-   2) Non-Repeatable Read : 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 그 사이에 다른 트랜잭션이 값을 수정,삭제하여 두 쿼리의 결과가 다르게 나타나는 현상입니다.
+   2) **Non-Repeatable Read** : 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 그 사이에 다른 트랜잭션이 값을 수정,삭제하여 두 쿼리의 결과가 다르게 나타나는 현상.
 
-   3) Phantom Read : 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상입니다.
+   3) **Phantom Read** : 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상.
 
   
 
-  나. 트랜잭션의 격리성 수준
+4. #### 영속성(Durability)
 
-   1) Read Uncommitted : 트랜잭션에서 처리 중인 아직 커밋되지 않은 데이터를 다른 트랜잭션이 읽는 것을 허용하는 것 입니다.
-
-    2) Read Committed : 트랜잭션이 커밋되어 확정된 데이터만 다른 트랜잭션이 읽도록 허용함으로써, Dirty Read를 방지해줌. 하지만, 커밋된 데이터만 읽더라도  Non-Repeatable Read와 Phantom Read현상을 막지 못합니다.
-
-    3) Repeatable Read : 트랜잭션 내에서 쿼리를 두 번 이상 수행할 때, 첫 번째 쿼리에 있던 레코드가 사라지거나 값이 바뀌는 현상을 방지해 줍니다. 하지만, Phantom Read 현상을 막지 못합니다.
-
-    4) Serializable Read : 트랜잭션 내에서 쿼리를 두 번 이상 수행할 때, 첫 번째 쿼리에 있던 레코드가 사라지거나, 값이 바뀌지 않음은 물론, 세로운 레코드가 나타나지도 않습니다.
-
-
-4. 영속성(Durability)
-
-  : 트랜잭션이 일단 실행을 성공적으로 완료하면, 그 결과는 데이터베이스에 영속적으로 저장되어야 합니다.
+트랜잭션이 일단 실행을 성공적으로 완료하면, 그 결과는 데이터베이스에 영속적으로 저장되어야 한다.
 
