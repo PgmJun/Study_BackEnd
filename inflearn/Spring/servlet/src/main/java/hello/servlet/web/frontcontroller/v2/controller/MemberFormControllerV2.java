@@ -16,4 +16,3 @@ public class MemberFormControllerV2 implements ControllerV2 {
 
     }
 }
-

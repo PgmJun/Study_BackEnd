@@ -12,7 +12,7 @@ public class MemberFormControllerV1 implements ControllerV1 {
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String viewPath = "/WEB-INF/views/new-form.jsp";
-        //RequestDispatch:컨트롤러에서 뷰로 이동할때 쓰이는 것
+        //RequestDispatch:컨트롤러에서 뷰를 출력할때 쓰이는 것
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
     }

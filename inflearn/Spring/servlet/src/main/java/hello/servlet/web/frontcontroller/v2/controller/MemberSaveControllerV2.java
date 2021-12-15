@@ -13,13 +13,11 @@ import java.io.IOException;
 
 public class MemberSaveControllerV2 implements ControllerV2 {
 
-    MemberRepository memberRepository = MemberRepository.getInstance();
-
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     public MyView process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        String username=request.getParameter("username");
+        String username= request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
 
         Member member=new Member(username,age);
@@ -29,6 +27,5 @@ public class MemberSaveControllerV2 implements ControllerV2 {
         request.setAttribute("member", member);
 
         return new MyView("/WEB-INF/views/save-result.jsp");
-
     }
 }
