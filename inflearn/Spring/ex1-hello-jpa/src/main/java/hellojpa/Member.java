@@ -1,28 +1,26 @@
 package hellojpa;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "MEMBER")
 public class Member {
-    @Id
+
+    @Id @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
+
+    @Column(name = "USERNAME")
     private String name;
 
-    public Member() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
+
+
+//    @Column(name = "TEAM_ID")
+//    private Long teamId;
 
     public Long getId() {
         return id;
@@ -39,5 +37,12 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-    //Getter, Setter …
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 }
