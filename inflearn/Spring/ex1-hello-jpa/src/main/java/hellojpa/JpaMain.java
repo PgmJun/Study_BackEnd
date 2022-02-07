@@ -17,34 +17,27 @@ public class JpaMain {
 
         try {
 
-            //저장
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
+            Member member1 = new Member();
+            member1.setUsername("hello");
+            em.persist(member1);
 
-            Member member = new Member();
-            member.setName("member1");
-            member.setTeam(team);
+            em.flush();
+            em.clear();
 
-            em.persist(member);
-
-            Member findMember = em.find(Member.class, member.getId());
-
-            Team findTeam = findMember.getTeam();
-            System.out.println("findTeam.getName() = " + findTeam.getName());
-            //
-            Team newTeam = em.find(Team.class, 100L);
-            findMember.setTeam(newTeam);
-
+            Member refMember = em.getReference(Member.class, member1.getId());
+            System.out.println("refMember.getClass() = " + refMember.getClass());
+            refMember.getUsername();
+            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));
 
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
-        } finally {
+        } finally {   
             em.close();
             emf.close();
         }
 
 
     }
+
 }
