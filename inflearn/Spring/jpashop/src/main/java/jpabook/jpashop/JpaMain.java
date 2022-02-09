@@ -31,6 +31,7 @@ public class JpaMain {
             tx.commit();
         } catch(Exception e){
             tx.rollback();
+            e.printStackTrace();
         }
 
         emf.close();
