@@ -1,26 +1,22 @@
 package pgmjun.wstest.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import pgmjun.wstest.dto.MsgRoom;
-import pgmjun.wstest.service.MsgService;
-
-import java.util.List;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.web.bind.annotation.RestController;
+import pgmjun.wstest.dto.Message;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/chat")
 public class MsgController {
 
-    private final MsgService msgService;
+    private final SimpMessageSendingOperations sendingOperations;
 
-    @PostMapping
-    public MsgRoom createRoom(@RequestParam String name){
-        return msgService.createRoom(name);
-    }
-
-    @GetMapping
-    public List<MsgRoom> findAllRoom(){
-        return msgService.findAllRoom();
+    @MessageMapping("/comm/message")
+    public void message(Message message) {
+        if (Message.MessageType.ENTER.equals(message.getMessageType())) {
+            message.setMessage(message.getSender() + "이 입장했습니다.");
+        }
+        sendingOperations.convertAndSend("/sub/comm/room/" + message.getRoomId(), message);
     }
 }

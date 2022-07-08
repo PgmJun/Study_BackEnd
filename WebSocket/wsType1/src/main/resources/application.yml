@@ -1,0 +1,25 @@
+spring:
+  freemarker:
+    cache: false
+    template-loader-path: classpath:/templates
+    suffix: .ftl
+
+  datasource:
+    driver-class-name: org.h2.Driver  #h2 드라이버 설정
+    url: jdbc:h2:tcp://localhost/~/wstest  #접속 URL
+    username: sa  # 사용자 이름 (로그인 시 사용)
+    password:   # 사용자 암호 (로그인 시 사용)
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+
+
+logging:
+  level:
+    org:
+      apache:
+        coyote:
+          http11: debug
