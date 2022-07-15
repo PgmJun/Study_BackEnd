@@ -1,12 +1,7 @@
 <%@ page import="heloo.servlet.domain.member.MemberRepository" %>
 <%@ page import="heloo.servlet.domain.member.Member" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: chltm
-  Date: 2022-07-14
-  Time: 오전 12:55
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     MemberRepository memberRepository = MemberRepository.getInstance();
