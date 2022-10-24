@@ -210,6 +210,8 @@ ex) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지는 않
 
 - 한계<br>
 
+<img src="https://user-images.githubusercontent.com/84304802/197562170-043ada5c-6b8f-45d0-9f51-8b8943b64f56.png" width="500px" height="280px" />
+
 -TCP/IP 연결을 새로 맺어야 함 - 3 way handshake 시간 추가<br>
 
 -웹 브라우저로 사이트를 요청하면 HTML 뿐만 아니라 자바스크립트, css, 추가 이미지 등 수 많은 자원이 함께 다운로드<br>
@@ -217,6 +219,8 @@ ex) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지는 않
 <br>
 
 - 극복<br>
+
+<img src="https://user-images.githubusercontent.com/84304802/197562212-9c33e6a9-7c5a-4304-80e5-8bd091400e43.png" width="500px" height="280px" />
 
 -지금은 HTTP 지속 연결(Persistent Connections)로 문제 해결<br>
 
