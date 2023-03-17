@@ -14,7 +14,8 @@
     - [서브쿼리에 따른 명칭](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC%EC%9D%98-%EC%9C%84%EC%B9%98%EC%97%90-%EB%94%B0%EB%A5%B8-%EB%AA%85%EC%B9%AD)
     - [서브쿼리의 반환 값에 따른 서브쿼리 종류](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC%EC%9D%98-%EB%B0%98%ED%99%98-%EA%B0%92%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-%EC%A2%85%EB%A5%98)
   - [저장 모듈](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%A0%80%EC%9E%A5-%EB%AA%A8%EB%93%88)
-  - [옵티마이저](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
+  - [
+  마이저](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%98%B5%ED%8B%B0%EB%A7%88%EC%9D%B4%EC%A0%80)
   - [순수 관계 연산자](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%88%9C%EC%88%98-%EA%B4%80%EA%B3%84-%EC%97%B0%EC%82%B0%EC%9E%90)
   - [DB 엔진에 따른 '' NULL처리 여부](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#insert-%EA%B5%AC%EB%AC%B8%EC%97%90%EC%84%9C-%EC%82%BD%EC%9E%85-%EC%8B%9C-null%EC%B2%98%EB%A6%AC)
   - [인덱스](https://github.com/PgmJun/Study_BackEnd/blob/main/SQL/SQL-TIL.md#%EC%9D%B8%EB%8D%B1%EC%8A%A4)
@@ -398,6 +399,8 @@ SQL SERVER: '' -> ''
 
 
 # 옵티마이저
+
+쿼리를 최적으로 실행하기 위해 각 테이블의 데이터가 어떤 분포로 저장돼 있는지를 참조하고, 데이터를 기반으로 최적의 실행 계획을 수립해주는 것이 옵티마이저(Optimizer)이다.
 
 - 규칙기반 옵티마이저:
 
